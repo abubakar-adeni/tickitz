@@ -1,10 +1,10 @@
 import React from 'react'
 import '../styles/Navbar.css'
 
-export default function navbar() {
+ function Navbar() {
   return (
     <>
-      <nav id='navbar' className="navbar navbar-expand-lg navbar-light bg-white shadow"
+      <nav id='navbar' className="navbar navbar-expand-lg navbar-light bg-white shadow-sm"
       style={{height: '80px'}}>
         <div className="container">
           <a className="navbar-brand" href="#">
@@ -29,3 +29,5 @@ export default function navbar() {
     </>
   )
 }
+
+export default Navbar;
