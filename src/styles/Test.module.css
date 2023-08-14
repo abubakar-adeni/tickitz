@@ -1,0 +1,70 @@
+.Wrapper {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+  
+  .Eye {
+    color: #5F2EEA !important;
+    border-color: #5F2EEA !important;
+  }
+  
+  .Eye:hover {
+    background-color: #5F2EEA !important;
+    border-color: #5F2EEA !important;
+    color: white !important;
+  }
+
+  .left {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(
+      rgba(139, 98, 244, 0.3),
+      rgba(98, 113, 244, 0.3)
+    ) ,
+    url("../assets/loginCover.png");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .Title,
+  .Text {
+    color: #5F2EEA;
+  }
+
+  .Login {
+    color: rgba(95, 46, 234, 1) !important;
+    font-weight: bold;
+  }
+
+  .Login:hover{
+    color: rgba(95, 46, 234, 0.8) !important;
+    font-weight: bold;
+  }
+
+
+
+.button {
+  background-color: rgba(95, 46, 234, 1) !important;
+  border-color: #5F2EEA !important;
+  }
+  
+.button:hover {
+  color: white !important;
+  background-color: rgba(95, 46, 234, 0.8) !important;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .left {
+      width: 100% !important;
+    }
+    .logo {
+      display: none !important;
+    }
+    .right {
+      width: 100% !important;
+      position: absolute !important;
+      margin-top: 25% !important;
+  
+      background-color: white !important;
+    }
+  }

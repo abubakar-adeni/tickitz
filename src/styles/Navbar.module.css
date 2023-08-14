@@ -1,0 +1,36 @@
+/* Navbar.module.css */
+
+.navbar {
+  font-family: 'Montserrat', sans-serif !important;
+  height: 80px;
+}
+
+.navbar-brand img {
+  max-height: 60px; /* Atur tinggi maksimal logo */
+}
+
+.navbar-nav .nav-link {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.Login {
+  color: #5F2EEA !important;
+  border-color: #5F2EEA !important;
+}
+
+.Login:hover {
+  background-color: #5F2EEA !important;
+  border-color: #5F2EEA !important;
+  color: white !important;
+}
+
+.Register {
+  background-color: #5F2EEA !important;
+  border-color: #5F2EEA !important;
+}
+
+.Register:hover {
+  color: #5F2EEA !important;
+  background-color: transparent !important;
+}
