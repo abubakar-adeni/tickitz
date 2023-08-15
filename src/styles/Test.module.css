@@ -1,3 +1,4 @@
+
 .Wrapper {
     font-family: 'Montserrat', sans-serif !important;
   }
@@ -66,5 +67,8 @@
       margin-top: 25% !important;
   
       background-color: white !important;
+    }
+    .container {
+      margin: auto;
     }
   }

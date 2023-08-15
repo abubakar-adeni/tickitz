@@ -26,13 +26,13 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className={`collapse navbar-collapse ${styles.navbarNav}`} id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className={`nav-link fs-5 fw-bold ${styles.navLink}`} href="#">
+          <div className="navbar-nav me-auto mb-2 mb-lg-0">
+            {/* <li className="nav-item"> */}
+              <Link to='/' className={`nav-link fs-5 fw-bold ${styles.navLink}`} href="#">
                 List Movie
-              </a>
-            </li>
-          </ul>
+              </Link>
+            {/* </li> */}
+          </div>
           <Link to='/login' className={`btn btn-outline-primary me-2 ${styles.Login}`}>
             Login
           </Link>

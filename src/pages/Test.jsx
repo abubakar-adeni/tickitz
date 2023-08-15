@@ -1,89 +1,82 @@
-import React, { useEffect } from "react"
-import '../styles/Auth.css'
-import { FaEye, FaEyeSlash } from "react-icons/fa"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../reducers/auth";
 
-function Test() {
-  const [password, setPassword] = React.useState("");
-  const [showPassword, setShowPassword] = React.useState(false);
+function Navbar() {
+  const isAuthenticated = localStorage.getItem("auth");
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state?.auth);
 
-
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(logout());
+    window.location.href = "/login";
   };
 
   return (
     <div>
-      <div className="row g-0">
-        <div className="col-6 left vh-100 d-flex justify-content-center align-items-center">
-          <img className="logo" src={require("../assets/Tickitz2.png")} alt="img-logo" />
-        </div>
-        <div className="col-md-5 col-xs-10 right d-flex flex-column justify-content-center">
+      <div className="container align-item-center mt-4">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
-            <h1 className="text-center Title mt-3">Welcome</h1>
-            <p className="text-center text-secondary Text">
-              Log in into your existing account
-            </p>
-            <div className="row justify-content-center">
-              <div className="col col-9">
-                <form>
-                  <div className="mb-3">
-                    <label htmlFor="email" className="form-label">
-                      E-mail
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="email"
-                      name="email"
-                      placeholder="E-mail"/>
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="password" className="form-label">
-                      Password
-                    </label>
-                    <div className="input-group">
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          className="form-control"
-                          id="password"
-                          name="password"
-                          placeholder="Password"
-                          autoComplete="off"
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <button
-                    className="btn btn-outline-warning"
-                    type="button"
-                    onClick={handleTogglePassword}
-                  >
-                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                  </button>
-                    </div>
-                  </div>
+            <button
+              type="button"
+              className="navbar-toggler"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-                  <div className="d-grid">
-                    <button
-                      type="submit"
-                      className="btn btn-warning mt-3"
-                    >
-                    </button>
-                  </div>
-                  <p className="text-end fs-6 fw-medium mt-3">
-                  </p>
-                </form>
+            <div className="collapse navbar-collapse" id="navbarCollapse">
+              <div className="navbar-nav">
+                <Link to="/" className="nav-item nav-link active">
+                  Home
+                </Link>
+                <Link to="/addrecipe" className="nav-item nav-link">
+                  Add Recipe
+                </Link>
+                <Link to="/profile" className="nav-item nav-link">
+                  Profile
+                </Link>
+              </div>
+              <div className="navbar-nav ms-auto">
+                {isAuthenticated ? (
+                  <>
+                    <div className="navbar-nav">
+                      <Link
+                        to="/EditProfile"
+                        className="nav-item nav-link active"
+                      >
+                        Edit Profile
+                      </Link>
+                      <Link
+                        to="/"
+                        className="nav-item nav-link active "
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" className="nav-item nav-link">
+                      Login
+                    </Link>
+                    <Link to="/register" className="nav-item nav-link">
+                      Register
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
-            <p className="text-center mt-2" style={{ color: "#5F2EEA"}}>
-              Don't have an account?
-              <button className="text-decoration-none" type="submit" 
-              style={{ color: "#5F2EEA", fontWeight: "bold" }}>Register</button>
-            </p>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );
 }
 
-export default Test;
+export default Navbar;

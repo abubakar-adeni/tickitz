@@ -1,29 +1,91 @@
 import React from 'react'
-import '../logo.svg'
+import ebu from '../assets/ebu.png'
+import hiflix from '../assets/hiflix.png'
+import cineone from '../assets/CineOne.png'
+import yt from '../assets/yt.png'
+import twitter from '../assets/twitter.png'
+import fb from '../assets/fb.png'
+import ig from '../assets/ig.png'
+import styles from '../styles/Footer.css'
+
 function Footer() {
     return (
         <>
-            <div className="row footer-info">
-                <div className="first-div col-md-3 col-sm-12">
-                    <img src={require("../assets/Tickitz1.png")} alt="logo-footer" />
-                    <p>Stop waiting in line. Buy tickets <br /> conveniently, watch movies quietly</p>
-                </div>
-                <div className="third-div col-md-3 col-sm-12">
-                    <h6>Our Sponsor</h6><ul class="footer-nav">
-                        <li class="item"><a class="link" href="/">
-                            <img src={require('../assets/ebu.svg')} alt="ebu id cinema" /></a>
-                        </li><li class="item">
-                            <a class="link" href="/">
-                                <img id="cineone" src="../assets/cineone.svg" alt="cineone cinema" />
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a class="link" href="/">
-                                <img id="hiflix" src="../assets/hiflix.svg" alt="hiflix cinema" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div>
+                {" "}
+                <footer>
+                    <div className="container">
+                        <div className="row mb-5">
+                            <div className="col-lg-4 col-md-6 col-sm-12 mb-4 mb-md-0">
+                                <img src={require('../assets/Tickitz1.png')} className="logo" alt="Logo Tickitz" />
+                                <p>
+                                    Stop waiting in line. Buy tickets
+                                    <br />
+                                    conveniently, watch movies quietly.
+                                </p>
+                            </div>
+                            <div className="col-lg-2 col-md-6 col-sm-12 mb-4 mb-md-0 pl-0">
+                                <p className="explore nav-link">Explore</p>
+                                <nav className="nav explore flex-row flex-md-column mt-1 mt-md-0">
+                                    <a className="nav-link mt-md-0 " href="/">
+                                        Cinemas
+                                    </a>
+                                    <a className="nav-link" href="/">
+                                        Movies List
+                                    </a>
+                                    <a className="nav-link" href="/">
+                                        My Ticket
+                                    </a>
+                                    <a className="nav-link" href="/">
+                                        Notification
+                                    </a>
+                                </nav>
+                            </div>
+                            <div className="col-lg-3 col-md-6 col-sm-12 mb-4 mb-md-0 pl-0">
+                                <p className="our-sponsor nav-link">Our Sponsor</p>
+                                <nav className="nav sponsor flex-row flex-md-column align-items-center align-items-md-start mt-1 mt-md-0">
+                                    <a className="nav-link" href="/">
+                                        <img src={ebu} alt="Ebv" />
+                                    </a>
+                                    <a className="nav-link" href="/">
+                                        <img src={cineone} alt="CineOne" />
+                                    </a>
+                                    <a className="nav-link" href="/">
+                                        <img src={hiflix} alt="Hiflix" />
+                                    </a>
+                                </nav>
+                            </div>
+                            <div className="col-lg-2 col-md-6 col-sm-12 mb-4 mb-md-0 pl-0">
+                                <p className="follow-us nav-link">Follow Us</p>
+                                <nav className="nav follow-us flex-row flex-md-column mt-1 mt-md-0">
+                                    <a className="nav-link d-flex align-items-center" href="/">
+                                        <img src={fb} className="facebook" alt="ok" />
+                                        <span>Tickitz Cinema id</span>
+                                    </a>
+                                    <a className="nav-link d-flex align-items-center" href="/">
+                                        <img src={ig} className="instagram" alt="ok" />
+                                        <span>tickitz.id</span>
+                                    </a>
+                                    <a className="nav-link d-flex align-items-center" href="/">
+                                        <img src={twitter} className="twitter" alt="ok" />
+                                        <span>tickitz.id</span>
+                                    </a>
+                                    <a className="nav-link d-flex align-items-center" href="/">
+                                        <img src={yt} className="youtube" alt="ok" />
+                                        <span>Tickitz Cinema id</span>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                        <div className="row pb-5">
+                            <div className="col d-flex align-items-center justify-content-start justify-content-md-center">
+                                <p className="copyright">
+                                    © 2021 Tickitz. All Rights Reserved.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </>
     )

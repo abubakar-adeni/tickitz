@@ -32,7 +32,7 @@ function Login() {
           <img style={{ boxSizing: "border-box"}} className={`${styles.logo} `} src={require("../assets/Tickitz2.png")} alt="img-logo" />
         </div>
         <div className={`col-md-5 col-xs-10 ${styles.right} d-flex flex-column justify-content-center `}>
-          <div className="container">
+          <div className={`${styles.container}`}>
             <h1 className={`text-center ${styles.Title} mt-3`}>Let's Get Started!</h1>
             <p className={`text-center ${styles.Text}`}>
               Create a new account to access all features
