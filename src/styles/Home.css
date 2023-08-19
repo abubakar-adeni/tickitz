@@ -32,207 +32,50 @@ header h1 {
   height: 100%;
 }
 
-.card-movie::after {
-  content: "";
-  display: block;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-}
+  /* Now Showing */
 
-/* Now Showing */
-.showing-movie {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
+  .now-showing {
+      color: #5f2eea;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      border-bottom: 5px solid #5f2eea;
+      display: inline-block;
+      padding-bottom: 10px;
+      font-family: 'Montserrat', sans-serif !important;
+  }
 
-.showing-movie .now-showing,
-.upcoming-movies .upcoming {
-  font-size: 24px;
-  font-weight: 700;
-  color: #14142b;
-}
+  .view-all {
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 2.5rem !important;
+    color: #5f2eea;
+  }
 
-.showing-movie .now-showing::after {
-  content: "";
-  display: block;
-  width: 100px;
-  background: #5f2eea;
-  border: 2px solid #5f2eea;
-  border-radius: 2px;
-  margin: 16px auto 0 auto;
-}
 
-.showing-movie a,
-.upcoming-movies a {
-  font-weight: 700;
-  font-size: 16px;
+
+/* End - Now Showing */
+
+/* Upcoming */
+.upcoming {
   color: #5f2eea;
-  text-decoration: none;
-}
-
-.showing-movie a:hover,
-.upcoming-movies a:hover {
-  color: #a68af1;
-}
-
-.now-showing-movie {
-  white-space: nowrap;
-  overflow: visible;
-}
-
-.showing-movie .card {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
   display: inline-block;
-  width: 223px;
-  height: 308px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0px 8px 32px rgba(186, 186, 186, 0.24);
-  border: 0;
-  margin-right: 16px;
+  padding-bottom: 10px;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
-.showing-movie .card img {
-  width: 159px;
-  height: 244px;
-}
+/* End Upcoming */
 
-/* Upcoming Movies */
-.upcoming-movies {
-  margin-top: 100px;
-  padding-bottom: 138px;
-}
-
-.upcoming-movies .container-btn-month {
-  white-space: nowrap;
-  overflow: auto;
-  margin-bottom: 50px;
-}
-
-.upcoming-movies .btn-month.main {
-  width: 127px;
-  height: 42px;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #5f2eea;
-  box-shadow: 0px 8px 30px rgba(95, 46, 234, 0.3);
-  border: 1px solid transparent;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 700;
-  transition: 0.5s ease;
-}
-
-.upcoming-movies .btn-month.main:hover {
-  color: #5f2eea;
-  background-color: #fff;
-  border: 1px solid #5f2eea;
-}
-
-.upcoming-movies .btn-month {
-  width: 127px;
-  height: 42px;
-  border-radius: 4px;
-  color: #5f2eea;
-  background-color: #fff;
-  border: 1px solid #5f2eea;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 18px;
-  transition: 0.5s ease;
-  margin-right: 12px;
-}
-
-.upcoming-movies .btn-month:hover {
-  color: #fff;
-  background-color: #5f2eea;
-  border: 1px solid transparent;
-}
-
-.container-upcoming-movie {
-  white-space: nowrap;
-  overflow: visible;
-}
-
-.card-upcoming-movie {
-  width: 223px;
-  height: auto;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-upcoming-movie .card {
-  display: inline-block;
-  width: 223px;
-  height: auto;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0px 8px 32px rgba(186, 186, 186, 0.24);
-  border: 0;
-  margin-right: 16px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.container-upcoming-movie .card img {
-  width: 159px;
-  height: 244px;
-}
-
-.container-upcoming-movie .card p {
-  margin-top: 24px;
-  font-weight: 700;
-  font-size: 18px;
-  color: #14142b;
-  letter-spacing: 0.15px;
-  text-align: center;
-}
-
-.container-upcoming-movie .card span {
-  margin-top: -10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  color: #a0a3bd;
-  letter-spacing: 0.4px;
-  text-align: center;
-}
-
-.container-upcoming-movie .card .btn-details {
-  width: 159px;
-  height: 33px;
-  border-radius: 4px;
-  color: #5f2eea;
-  background-color: #fff;
-  border: 1px solid #5f2eea;
-  font-size: 14px;
-  font-weight: 400;
-  transition: 0.5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.container-upcoming-movie .card .btn-details:hover {
-  color: #fff;
-  background-color: #5f2eea;
-  border: 1px solid transparent;
-}
 /* Join */
 .join {
   padding-bottom: 96px;
 }
 
 .jumbotron {
+  margin-top: 25px;
   height: 372px;
   background-color: #fff;
   box-shadow: 0px 16px 32px rgba(186, 186, 186, 0.3);

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Navbar.module.css'
 import { Link } from 'react-router-dom';
+import profilImage from '../assets/Profile Image.png'
 
 function Navbar() {
   const isAuthenticated = true;
@@ -25,20 +26,40 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className={`collapse navbar-collapse ${styles.navbarNav}`} id="navbarSupportedContent">
           <div className="navbar-nav me-auto mb-2 mb-lg-0">
             {/* <li className="nav-item"> */}
-              <Link to='/' className={`nav-link fs-5 fw-bold ${styles.navLink}`} href="#">
-                List Movie
-              </Link>
+            <Link to='/' className={`nav-link fs-5 fw-bold ${styles.navLink}`} href="#">
+              List Movie
+            </Link>
             {/* </li> */}
           </div>
-          <Link to='/login' className={`btn btn-outline-primary me-2 ${styles.Login}`}>
-            Login
-          </Link>
-          <Link to='/register' className={`btn btn-primary ${styles.Register}`}>
-            Register
-          </Link>
+          {localStorage.getItem("auth") ? (<>
+            <Link to='/'>
+              <img src={profilImage}
+                className="me-4 rounded-circle"
+                alt="Cart"
+                width="35px"></img>
+            </Link>
+            <Link onClick={() => {
+              localStorage.clear()
+
+              window.location.href = "/login"
+            }} className={`btn btn-primary ${styles.Register}`}>
+              Logout
+            </Link>
+          </>
+          ) : (
+            <>
+              <Link to='/login' className={`btn btn-outline-primary me-2 ${styles.Login}`}>
+                Login
+              </Link>
+              <Link to='/register' className={`btn btn-primary ${styles.Register}`}>
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
