@@ -1,0 +1,41 @@
+.custom-checkbox {
+  display: inline-block;
+  color: blue;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  margin: 25px;
+}
+
+.custom-checkbox input {
+  color: blue;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  
+}
+
+.checkmark {
+  border-radius: 7px;
+  color: blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgba(164, 164, 164, 0.704);
+  border: 2px solid #4B6BFB;
+}
+
+.custom-checkbox:hover .checkmark {
+  color: blue;
+  transform: scale(1.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  border-color: transparent;
+  background-color: purple;
+}

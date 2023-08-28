@@ -7,7 +7,10 @@ import { Provider } from "react-redux";
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Movies from "./pages/Movies";
 import axios from 'axios';
+import ViewALL from "./pages/view-all";
+import Seat from "./components/seat";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,18 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-
+  {
+    path: "/movies/:id",
+    element: <Movies />,
+  },
+  {
+    path: "/view-all",
+    element: <ViewALL />,
+  },
+  {
+    path: "/seat",
+    element: <Seat />,
+  },
 ])
 
 function App() {

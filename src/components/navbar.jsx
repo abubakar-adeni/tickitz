@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import profilImage from '../assets/Profile Image.png'
 
 function Navbar() {
-  const isAuthenticated = true;
+
 
   return (
     <nav id='navbar' className={`navbar navbar-expand-lg navbar-light bg-white shadow-sm ${styles.navbar}`}>
       <div className="container">
         <a className="navbar-brand" href="#">
+          <Link to={'/'}>
           <img
             src={require("../assets/Tickitz1.png")}
             alt="icon-app"
-          />
+          /></Link>
         </a>
         <button
           className="navbar-toggler"
@@ -30,13 +31,13 @@ function Navbar() {
         <div className={`collapse navbar-collapse ${styles.navbarNav}`} id="navbarSupportedContent">
           <div className="navbar-nav me-auto mb-2 mb-lg-0">
             {/* <li className="nav-item"> */}
-            <Link to='/' className={`nav-link fs-5 fw-bold ${styles.navLink}`} href="#">
+            <Link to={'/view-all'} className={`nav-link fs-5 fw-bold ${styles.navLink}`} href="#">
               List Movie
             </Link>
             {/* </li> */}
           </div>
           {localStorage.getItem("auth") ? (<>
-            <Link to='/'>
+            <Link to='/profile'>
               <img src={profilImage}
                 className="me-4 rounded-circle"
                 alt="Cart"

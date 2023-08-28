@@ -1,0 +1,51 @@
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.arrow::after {
+    content: none !important; 
+  }
+
+ .dots {
+    position: absolute !important;
+    top: 0.75rem !important; 
+    right: 0.75rem !important; 
+  }
+
+.info {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+}
+
+#home-tab, #profile-tab {
+  color: #5F2EEA;
+}
+  
+  /* Optional: Add margin to prevent overlapping */
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .last-name, .phone-number {
+    margin-left: 10px;
+  }
+
+  .update-changes {
+    background-color: rgba(95, 46, 234, 1) !important;
+    font-weight: bold;
+  }
+
+  .update-changes:hover{
+    background-color: rgba(95, 46, 234, 0.8) !important;
+  }
+
+  @media (max-width: 767px) {
+    .responsive-form .d-flex {
+      flex-direction: column !important;
+    }
+
+    .last-name, .phone-number {
+      margin-left: 0;
+    }
+  }

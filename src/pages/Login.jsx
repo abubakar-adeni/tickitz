@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from '../styles/Test.module.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAuth } from "../reducers/auth";
 import Loader from "../components/loader";
@@ -10,18 +9,12 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 function Login() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("auth")) {
-      navigate("/");
-    }
-  }, []);
+  
 
   // const [isResponsive, setIsResponsive] = useState(
   //   window.innerWidth >= 375 && window.innerWidth <= 768
@@ -42,47 +35,35 @@ function Login() {
   //   };
   // }, []);
 
-  const handeLogin = () => {
-    setIsLoading(true);
+  const handleLogin = () => {
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
         email: email,
         password: password,
       })
-      .then((result) => {
+      .then((response) => {
+        const token = response?.data?.token
+        const user_id = response?.data?.data?.id
+
         Swal.fire({
           title: "Login Success",
-          text: "Login Success",
+          text: "Login Success, redirect to app...",
           icon: "success",
         }).then(() => {
-          localStorage.setItem("auth", "true");
-          localStorage.setItem("token", result?.data?.token);
-          dispatch(addAuth(result.data));
-          navigate("/");
-        });
+          localStorage.setItem("auth", "true")
+          localStorage.setItem("token", token)
+          localStorage.setItem("user_id", user_id)
+          window.location.href = "/"
+        })
       })
       .catch((error) => {
-        let errorMessage = "Something went wrong";
-        if (error.response && error.response.status === 401) {
-          errorMessage = "Invalid email or password";
-        } else if (
-          error.response &&
-          error.response.data &&
-          error.response.data.message
-        ) {
-          errorMessage = error.response.data.message;
-        }
         Swal.fire({
           title: "Login Failed",
-          text: errorMessage,
+          text: error?.response?.data?.message ?? "Something wrong in our app",
           icon: "error",
-        });
+        })
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
+  }
 
   return (
     <div>
@@ -145,7 +126,7 @@ function Login() {
                       // style={{backgroundColor: '#5F2EEA'}}
                       type="submit"
                       className={`btn btn-primary ${styles.button} mt-3`}
-                      onClick={handeLogin}
+                      onClick={handleLogin}
                     >
                        {isLoading ? <Loader text="Logging in..."/> : <span>Log in</span>}
                     </button>

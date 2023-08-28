@@ -6,7 +6,7 @@ import styles from '../styles/Home.css';
 import banner1 from '../assets/banner1.png'
 import banner2 from '../assets/banner2.png'
 import banner3 from '../assets/banner3.png'
-import UpComingMovies from '../components/UpcomingMovies';
+import UpComingMovies from '../components/UpComingMovies';
 
 export default function Home() {
   return (
@@ -56,7 +56,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="col-12 col-md-5">
-                  <button
+                  <button 
                     className="btn mt-3 btn-join-now w-100"
                     type="submit"
                   >

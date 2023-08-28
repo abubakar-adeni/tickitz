@@ -1,0 +1,34 @@
+
+[
+    {
+      "id": 1,
+      "title": "Avengers: Endgame",
+      "genre": "Action, Adventure, Sci-Fi",
+      "image": "../public/avenger.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Inception",
+      "genre": "Action, Adventure, Sci-Fi",
+      "image": "../assets/inception.jpg"
+    },
+    {
+      "id": 3,
+      "title": "The Shawshank Redemption",
+      "genre": "Drama",
+      "image": "../assets/shawshank.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Toy Story",
+      "genre": "Animation, Adventure, Comedy",
+      "image": "../assets/pulpfiction.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Pulp Fiction",
+      "genre": "Crime, Drama",
+      "image": "../assets/toystory.jpg"
+    }
+  ]
+  
