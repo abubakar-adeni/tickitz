@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../styles/card.css'
 import axios from 'axios'
 
-export default function UpComingMovies() {
+export default function UpcomingMovies() {
     const [upcomingMovies, SetListPopular] = React.useState([])
     //   const films = [
     //     {
