@@ -10,79 +10,108 @@
   } */
 
 
-  .parent {
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: repeat(11, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    
-    .div1 { grid-area: 2 / 2 / 4 / 7; }
-    .div2 { grid-area: 2 / 8 / 8 / 11; }
-    .seat { grid-area: 5 / 2 / 11 / 8; }
+.parent {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
 
-    .custom-checkbox {
-        display: inline-block;
-        color: blue;
-        position: relative;
-        padding-left: 30px;
-        cursor: pointer;
-        font-size: 18px;
-        user-select: none;
-        margin: 25px;
-      }
-      
-      .custom-checkbox input {
-        color: blue;
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-      }
-      
-      .checkmark {
-        border-radius: 7px;
-        color: blue;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 20px;
-        width: 20px;
-        background-color: transparent;
-        border: 2px solid #333;
-      }
-      
-      .custom-checkbox:hover .checkmark {
-        color: blue;
-        transform: scale(1.2);
-        transition: transform 0.2s ease-in-out;
-      }
-      
-      .custom-checkbox input:checked ~ .checkmark {
-        border-color: transparent;
-        background-color: purple; /* Warna berubah menjadi ungu saat tercentang */
-      }
-      
-      .seat-label {
-        display: inline-block;
-        width: 20px;
-        text-align: center;
-        font-weight: bold;
-        margin-right: 10px;
-      }
-      
-      /* Gaya untuk label "A" */
-      .seat-label.A {
-        color: blue;
-      }
-      
-      /* Gaya untuk label "B" */
-      .seat-label.B {
-        color: green;
-      }
-      
-      .row-number {
-        display: inline-block;
-        margin: 36px;
-      }
-      
+.div1 {
+  grid-area: 2 / 2 / 4 / 7;
+}
+
+.div2 {
+  grid-area: 2 / 8 / 8 / 11;
+}
+
+.seat {
+  grid-area: 5 / 2 / 11 / 8;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  color: blue;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  margin: 25px;
+}
+
+.custom-checkbox input {
+  color: blue;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  border-radius: 7px;
+  color: blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid #333;
+}
+
+.custom-checkbox:hover .checkmark {
+  color: blue;
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-checkbox input:checked~.checkmark {
+  border-color: transparent;
+  background-color: #5F2EEA;
+}
+
+.seat-label {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+.seat-label.A {
+  color: blue;
+}
+
+
+.seat-label.B {
+  color: green;
+}
+
+.row-number {
+  display: inline-block;
+  margin: 36px;
+}
+
+.checkout-now {
+  color: #5F2EEA !important;
+  border-color: #5F2EEA !important;
+}
+
+.checkout-now:hover {
+  background-color: #5F2EEA !important;
+  border-color: #5F2EEA !important;
+  color: white !important;
+}
+
+.change-movie {
+  background-color: #5F2EEA !important;
+  border-color: #5F2EEA !important;
+  color: white !important;
+}
+
+.change-movie:hover {
+  color: #5F2EEA !important;
+  background-color: transparent !important;
+}

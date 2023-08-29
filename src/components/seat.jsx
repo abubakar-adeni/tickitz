@@ -41,7 +41,7 @@ export default function Test() {
             <h2>Movie Selected</h2>
             <div className="movie-selected bg-white text-dark p-4 rounded-3 d-flex align-items-center" style={{ height: '20vh' }}>
               <img src={require("../assets/CineOne.png")}></img>
-              <button type="button" class="btn btn-primary ms-auto" >Change Movie</button>
+              <button type="button" class="btn ms-auto change-movie" >Change Movie</button>
             </div>
           </div>
           <div class="col-5 rounded-3 mt-5">
@@ -179,8 +179,8 @@ export default function Test() {
                     </div> */}
         </div>
         <div className='row text-center justify-content-center'>
-          <button type="button" className="col-2 btn btn-lg btn-primary mt-4 me-5">Change Your Movie</button>
-          <button type="button" className=" col-2 btn btn-lg btn-primary mt-4 ms-5">Checkout Now</button>
+          <button type="button" className="col-2 btn btn-lg  mt-4 me-5 checkout-now">Change Your Movie</button>
+          <button type="button" className=" col-2 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</button>
         </div>
       </div>
     </>
