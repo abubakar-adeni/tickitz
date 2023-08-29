@@ -11,6 +11,7 @@ import Movies from "./pages/Movies";
 import axios from 'axios';
 import ViewALL from "./pages/view-all";
 import Seat from "./components/seat";
+import Test from "./pages/Test";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/seat",
     element: <Seat />,
+  },
+  {
+    path: "/test",
+    element: <Test />,
   },
 ])
 

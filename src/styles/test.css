@@ -9,8 +9,8 @@
     align-items: center;
   } */
 
-
-  .parent {
+/* 
+.parent {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(11, 1fr);
@@ -60,7 +60,7 @@
       
       .custom-checkbox input:checked ~ .checkmark {
         border-color: transparent;
-        background-color: purple; /* Warna berubah menjadi ungu saat tercentang */
+        background-color: purple; 
       }
       
       .seat-label {
@@ -71,12 +71,12 @@
         margin-right: 10px;
       }
       
-      /* Gaya untuk label "A" */
+
       .seat-label.A {
         color: blue;
       }
       
-      /* Gaya untuk label "B" */
+
       .seat-label.B {
         color: green;
       }
@@ -85,4 +85,4 @@
         display: inline-block;
         margin: 36px;
       }
-      
+       */
