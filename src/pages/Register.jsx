@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-function Login() {
+function Register() {
   const navigate = useNavigate()
   const [fullName, setFullName] = React.useState("")
   const [email, setEmail] = React.useState("")
