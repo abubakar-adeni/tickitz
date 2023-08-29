@@ -72,9 +72,11 @@ function Register() {
             </p>
             <div className="row justify-content-center">
               <div className="col col-9">
-                <form>
+                <form onSubmit={(event) => {
+                  event.preventDefault();
+                }}>
                   <div className="mb-3">
-                    <label htmlFor="email" className={`form-label ${styles.Text}`}>
+                    <label className={`form-label ${styles.Text}`}>
                       Name
                     </label>
                     <input
@@ -87,7 +89,7 @@ function Register() {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="email" className={`form-label ${styles.Text}`}>
+                    <label className={`form-label ${styles.Text}`}>
                       E-mail
                     </label>
                     <input
@@ -100,7 +102,7 @@ function Register() {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="phoneNumber" className={`form-label ${styles.Text}`}>
+                    <label className={`form-label ${styles.Text}`}>
                       Phone Number
                     </label>
                     <input
@@ -113,7 +115,7 @@ function Register() {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="password" className={`form-label ${styles.Text}`}>
+                    <label className={`form-label ${styles.Text}`}>
                       Password
                     </label>
                     <div className="input-group">
@@ -142,7 +144,7 @@ function Register() {
                       // style={{backgroundColor: '#5F2EEA'}}
                       type="submit"
                       className={`btn btn-primary ${styles.button} mt-3`}
-                      onClick={handleRegistration}  
+                      onClick={handleRegistration}
                     >
                       Register
                     </button>
@@ -162,4 +164,4 @@ function Register() {
   );
 }
 
-export default Login;
+export default Register;
