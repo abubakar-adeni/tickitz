@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import styles from '../styles/Test.module.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 function Login() {
+  const navigate = useNavigate()
+  const [fullName, setFullName] = React.useState("")
+  const [email, setEmail] = React.useState("")
+  const [phone_number, setPhone_Number] = React.useState("")
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   // const [isResponsive, setIsResponsive] = useState(
@@ -24,12 +31,38 @@ function Login() {
   //     window.removeEventListener("resize", handleResize);
   //   };
   // }, []);
+  const handleRegistration = () => {
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/users`, {
+        email: email,
+        fullname: fullName,
+        password: password,
+        phone_number: phone_number,
+      })
+      .then((response) => {
+        Swal.fire({
+          title: "Registration Success!",
+          text: "Registration Success! Please Login",
+          icon: "success",
+        }).then(() => {
+          navigate("/login")
+        })
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: error?.response?.data?.message ?? "Something wrong in our App!",
+          icon: "error",
+        })
+      })
+  }
+
 
   return (
     <div>
       <div className={`row g-0`}>
         <div className={`col-6  vh-100 d-flex justify-content-center align-items-center ${styles.left} `}>
-          <img style={{ boxSizing: "border-box"}} className={`${styles.logo} `} src={require("../assets/Tickitz2.png")} alt="img-logo" />
+          <img style={{ boxSizing: "border-box" }} className={`${styles.logo} `} src={require("../assets/Tickitz2.png")} alt="img-logo" />
         </div>
         <div className={`col-md-5 col-xs-10 ${styles.right} d-flex flex-column justify-content-center `}>
           <div className={`${styles.container}`}>
@@ -40,7 +73,7 @@ function Login() {
             <div className="row justify-content-center">
               <div className="col col-9">
                 <form>
-                <div className="mb-3">
+                  <div className="mb-3">
                     <label htmlFor="email" className={`form-label ${styles.Text}`}>
                       Name
                     </label>
@@ -50,6 +83,7 @@ function Login() {
                       id="name"
                       name="name"
                       placeholder="name"
+                      onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">
@@ -62,20 +96,22 @@ function Login() {
                       id="email"
                       name="email"
                       placeholder="E-mail"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">
-                  <label htmlFor="phoneNumber" className={`form-label ${styles.Text}`}>
-                    Phone Number
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control form-control-sm"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    placeholder="08xxxxxxxxxx"
-                  />
-                </div>
+                    <label htmlFor="phoneNumber" className={`form-label ${styles.Text}`}>
+                      Phone Number
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control form-control-sm"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      placeholder="08xxxxxxxxxx"
+                      onChange={(e) => setPhone_Number(e.target.value)}
+                    />
+                  </div>
                   <div className="mb-3">
                     <label htmlFor="password" className={`form-label ${styles.Text}`}>
                       Password
@@ -106,6 +142,7 @@ function Login() {
                       // style={{backgroundColor: '#5F2EEA'}}
                       type="submit"
                       className={`btn btn-primary ${styles.button} mt-3`}
+                      onClick={handleRegistration}  
                     >
                       Register
                     </button>
@@ -114,7 +151,7 @@ function Login() {
                 </form>
               </div>
             </div>
-            <p className="text-center mt-2" style={{ color: "#5F2EEA"}}>
+            <p className="text-center mt-2" style={{ color: "#5F2EEA" }}>
               Already have an account? {' '}
               <Link to='/login' className={`text-decoration-none ${styles.Login}`}>Log in here</Link>
             </p>
