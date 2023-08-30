@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     element: <ViewALL />,
   },
   {
-    path: "/seat",
+    path: "/seat/:id",
     element: <Seat />,
   },
   {

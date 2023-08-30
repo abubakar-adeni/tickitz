@@ -14,7 +14,7 @@ function Footer() {
             <div>
                 {" "}
                 <footer>
-                    <div className="container">
+                    <div className="container mt-2">
                         <div className="row mb-5">
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-4 mb-md-0">
                                 <img src={require('../assets/Tickitz1.png')} className="logo" alt="Logo Tickitz" />

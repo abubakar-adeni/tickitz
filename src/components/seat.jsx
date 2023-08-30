@@ -4,14 +4,22 @@ import { useState } from 'react'
 import Navbar from '../components/navbar'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/footer'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { useLocation } from "react-router-dom"
+import { Link } from 'react-router-dom'
+import { FormatRupiah } from '@arismun/format-rupiah'
+
 export default function Test() {
   const seatA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const seatB = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const seatC = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const seatD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+  const [movies, setMovies] = React.useState([])
+  const location = useLocation()
   const [selectedSeats, setSelectedSeats] = useState([]);
   const navigate = useNavigate()
+  const id = location?.pathname?.split("/")[2]
   const handleSeatClick = (blockName, seatNumber) => {
     const seatId = `${blockName}-${seatNumber}`;
     if (selectedSeats.includes(seatId)) {
@@ -20,6 +28,7 @@ export default function Test() {
       setSelectedSeats([...selectedSeats, seatId]);
     }
   };
+  const totalPrice = movies.price * selectedSeats.length;
 
   const selectedSeatText = selectedSeats.length > 0
     ? `Selected seats: ${selectedSeats.join(", ")}`
@@ -29,6 +38,18 @@ export default function Test() {
     !localStorage.getItem("auth") && navigate("/login");
   }, []);
 
+  useEffect(() => {
+    window.scroll(0, 0)
+    // if (!localStorage.getItem("auth")) {
+    //     navigate("/login");
+    // }
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
+      .then((response) => setMovies(response?.data?.data[0]))
+      .catch((err) => {
+        console.log("error :", err)
+      })
+  }, []);
 
 
   return (
@@ -40,23 +61,38 @@ export default function Test() {
           <div class="col-6 mt-5 ms-2">
             <h2>Movie Selected</h2>
             <div className="movie-selected bg-white text-dark p-4 rounded-3 d-flex align-items-center" style={{ height: '20vh' }}>
-              <img src={require("../assets/CineOne.png")}></img>
-              <button type="button" class="btn ms-auto change-movie" >Change Movie</button>
+              <h4>{movies.title}</h4>
+              <Link to={'/view-all'} class="btn ms-auto change-movie" >Change Movie</Link>
             </div>
           </div>
           <div class="col-5 rounded-3 mt-5">
             <h2>Order Info</h2>
             <div className="movie-selected bg-white text-dark p-4 rounded-3 text-center">
               <img src={require("../assets/CineOne.png")}></img>
-              <div class="text-start p-2">Movie selected
-                <p className='text-start fe'></p>
+              <div class="text-start p-2">
+                <div class="row">
+                  <div class="col-6">Movie Selected</div>
+                  <div class="col-6 text-end">{movies.title}</div>
+                </div>
               </div>
-              <div class="text-start p-2">One ticket price
-                <p className='text-start fe'></p>
+              <div class="text-start p-2">
+                <div class="row">
+                  <div class="col-6">Date</div>
+                  <div class="col-6 text-end">{movies.price}</div>
+                </div>
+              </div>
+              <div class="text-start p-2">
+                <div class="row">
+                  <div class="col-6">One ticket price</div>
+                  <div class="col-6 text-end"><FormatRupiah value={movies.price} /></div>
+                </div>
               </div>
               <hr />
-              <div class="text-start p-2 fw-bold">Total Payment
-                <p className='text-start fe'></p>
+              <div class="text-start p-2 fw-bold">
+                <div class="row">
+                  <div class="col-6">Total Payment</div>
+                  <div class="col-6 text-end"><FormatRupiah value={totalPrice}/></div>
+                </div>
               </div>
             </div>
           </div>
@@ -179,7 +215,7 @@ export default function Test() {
                     </div> */}
         </div>
         <div className='row text-center justify-content-center'>
-          <button type="button" className="col-2 btn btn-lg  mt-4 me-5 checkout-now">Change Your Movie</button>
+          <Link to={'/view-all'} className="col-2 btn btn-lg  mt-4 me-5 checkout-now">Change Your Movie</Link>
           <button type="button" className=" col-2 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</button>
         </div>
       </div>

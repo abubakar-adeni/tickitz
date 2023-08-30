@@ -5,6 +5,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi"
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Movies() {
     const location = useLocation()
@@ -112,7 +113,7 @@ export default function Movies() {
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <Link to={`/seat/${id}`} class="btn btn-primary">Go somewhere</Link>
                                 </div>
                             </div>
 
