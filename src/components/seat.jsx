@@ -3,7 +3,7 @@ import '../styles/seat.css'
 import { useState } from 'react'
 import Navbar from '../components/navbar'
 import { useNavigate } from 'react-router-dom'
-
+import footer from '../components/footer'
 export default function Test() {
   const seatA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const seatB = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -183,6 +183,7 @@ export default function Test() {
           <button type="button" className=" col-2 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</button>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
