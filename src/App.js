@@ -12,6 +12,7 @@ import axios from 'axios';
 import ViewALL from "./pages/view-all";
 import Seat from "./components/seat";
 import Test from "./pages/Test";
+import Payment from "./pages/Payment";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <Test />,
+  },
+  {
+    path: "/payment/:id",
+    element: <Payment />,
   },
 ])
 

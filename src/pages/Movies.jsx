@@ -7,7 +7,8 @@ import axios from "axios"
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { FormatRupiah } from '@arismun/format-rupiah'
-import Footer from "../components/footer";
+import Footer from "../components/footer"
+
 
 export default function Movies() {
     const location = useLocation()
