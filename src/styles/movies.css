@@ -26,7 +26,8 @@
 }
 
 .typo,
-.title-movie, .genre-movie {
+.title-movie,
+.genre-movie {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center !important;
@@ -38,7 +39,9 @@
     align-items: center !important;
 }
 
-.date-release, .col-movie, .row-movie {
+.date-release,
+.col-movie,
+.row-movie {
     display: flex !important;
     flex-direction: row !important;
     justify-content: flex-start !important;
@@ -64,4 +67,21 @@
 
 .fe {
     font-weight: normal;
+}
+
+.location .date {
+    color: blueviolet !important;
+}
+
+.book-now {
+    background-color: #5F2EEA !important;
+    border-color: #5F2EEA !important;
+    color: white !important;
+    filter: drop-shadow(8px 8px 4px #4444dd);
+}
+
+.book-now:hover {
+    color: #5F2EEA !important;
+    background-color: transparent !important;
+    
 }
