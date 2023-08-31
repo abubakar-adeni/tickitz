@@ -91,7 +91,7 @@ export default function Test() {
               <div className="text-start p-2 fw-bold">
                 <div className="row">
                   <div className="col-6">Total Payment</div>
-                  <div className="col-6 text-end"><FormatRupiah value={totalPrice}/></div>
+                  <div className="col-6 text-end"><FormatRupiah value={totalPrice} /></div>
                 </div>
               </div>
             </div>
@@ -206,19 +206,19 @@ export default function Test() {
             </div>
 
           </div>
-          {/* <div className="col-4 bg-white text-dark rounded-3">
-                        <h2>Movie Selected</h2>
-                        <div className="movie-selected bg-white text-dark p-4 rounded-3">
-                            <img src={require("../assets/CineOne.png")}></img>
-                            <button type="button" className="btn btn-primary float-end" >Change Movie</button>
-                        </div>
-                    </div> */}
         </div>
         <div className='row text-center justify-content-center'>
           <Link to={'/view-all'} className="col-2 btn btn-lg  mt-4 me-5 checkout-now">Change Your Movie</Link>
-          <Link to={`/payment/${id}?selectedSeats=${selectedSeats.join(',')}`} className="col-2 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</Link>
+          <Link
+            to={`/payment/${id}?selectedSeats=${selectedSeats.join(',')}`}
+            className={`col-2 btn btn-lg mt-4 ms-5 change-movie ${selectedSeats.length === 0 ? 'disabled' : ''
+              }`}
+            disabled={selectedSeats.length === 0}
+          >
+            Checkout Now
+          </Link>
         </div>
-      </div>  
+      </div>
       <Footer />
     </>
   )
