@@ -1,178 +1,49 @@
 import React from 'react'
-import '../styles/test.css'
-import { useState } from 'react';
-import Navbar from '../components/navbar';
+import Navbar from '../components/navbar'
+import Footer from '../components/footer'
+import { HiUserGroup } from 'react-icons/hi'
+import qrCodeSvg from '../assets/qr-code.svg';
 
 export default function Test() {
-    const seatA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const seatB = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const seatC = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const seatD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-    const [selectedSeats, setSelectedSeats] = useState([]);
-
-    const handleSeatClick = (blockName, seatNumber) => {
-        const seatId = `${blockName}-${seatNumber}`;
-        if (selectedSeats.includes(seatId)) {
-            setSelectedSeats(selectedSeats.filter(seat => seat !== seatId));
-        } else {
-            setSelectedSeats([...selectedSeats, seatId]);
-        }
-    };
-
-    const selectedSeatText = selectedSeats.length > 0
-        ? `Selected seats: ${selectedSeats.join(", ")}`
-        : "Choose your seat";
-
-
     return (
         <>
             <Navbar />
-            <div class="container-fluid bg-light text-dark pb-5">
-
-                <div class="row">
-                    <div class="col-6 mt-5 ms-2">
-                        <h2>Movie Selected</h2>
-                        <div className="movie-selected bg-white text-dark p-4 rounded-3">
-                            <img src={require("../assets/CineOne.png")}></img>
-                            <button type="button" class="btn btn-primary float-end" >Change Movie</button>
-                        </div>
-                    </div>
-                    <div class="col-5 rounded-3 mt-5">
-                        <h2>Order Info</h2>
-                        <div className="movie-selected bg-white text-dark p-4 rounded-3 text-center">
-                            <img src={require("../assets/CineOne.png")}></img>
-                            <div class="text-start p-2">Movie selected
-                                <p className='text-start fe'></p>
-                            </div>
-                            <div class="text-start p-2">One ticket price
-                                <p className='text-start fe'></p>
-                            </div>
-                            <hr />
-                            <div class="text-start p-2 fw-bold">Total Payment
-                                <p className='text-start fe'></p>
+            <div className="container-fluid" style={{ backgroundColor: '#F5F6F8', height: '600px', border: '1px solid red' }}>
+                <div className="container text-center  bg-white mt-5" style={{ borderRadius: '15px' }}>
+                    <div className="row align-items-start">
+                        <h1 className='mt-3'>Proof of Payment</h1>
+                        <div className="col d-flex justify-content-center">
+                            <div className="p-3 mt-4 bg-black text-white" style={{ width: '80%', borderRadius: '20px 20px 0 0' }}>
+                                <div className="row align-items-start">
+                                    <div className="col">
+                                        <img src={require("../assets/Tickitz1.png")} alt="logo-tickitz" />
+                                    </div>
+                                    <div className="col">
+                                        <h5>Admit One</h5>
+                                    </div>
+                                    <div className="col">
+                                        <img src={require("../assets/Tickitz1.png")} alt="logo-tickitz" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row mt-5 ms-2 gap-3 text-center">
-                    <div class="col-9 bg-white text-dark rounded-3">
-                        <h4 className='p-4'>{selectedSeatText}</h4>
-                        <div className="seat-container">
-                            <div className="seat-row"> A
-                                {seatA.map((seatNumber) => {
-                                    const seatId = `A-${seatNumber}`;
-                                    const isSelected = selectedSeats.includes(seatId);
-
-                                    return (
-                                        <label
-                                            key={seatId}
-                                            className={`custom-checkbox ${isSelected ? "checked" : ""}`}
-                                            htmlFor={seatId}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                id={seatId}
-                                                checked={isSelected}
-                                                onChange={() => handleSeatClick("A", seatNumber)}
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    );
-                                })}
+                    <div className="container text-center" style={{ backgroundColor: 'white', width: '80%', height: '330px', border: '1px solid #DEDEDE', borderRadius: '0 0 20px 20px' }}>
+                        <div class="row justify-content-between mt-5">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div>APA</div>
+                                    <div>Kenapa</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img src={qrCodeSvg} alt="qr" width="250" height="250" />
                             </div>
                         </div>
-                        <div className="seat-container">
-                            <div className="seat-row"> B
-                                {seatB.map((seatNumber) => {
-                                    const seatId = `B-${seatNumber}`;
-                                    const isSelected = selectedSeats.includes(seatId);
-
-                                    return (
-                                        <label
-                                            key={seatId}
-                                            className={`custom-checkbox ${isSelected ? "checked" : ""}`}
-                                            htmlFor={seatId}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                id={seatId}
-                                                checked={isSelected}
-                                                onChange={() => handleSeatClick("B", seatNumber)}
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                        <div className="seat-container">
-                            <div className="seat-row"> C
-                                {seatC.map((seatNumber) => {
-                                    const seatId = `C-${seatNumber}`;
-                                    const isSelected = selectedSeats.includes(seatId);
-
-                                    return (
-                                        <label
-                                            key={seatId}
-                                            className={`custom-checkbox ${isSelected ? "checked" : ""}`}
-                                            htmlFor={seatId}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                id={seatId}
-                                                checked={isSelected}
-                                                onChange={() => handleSeatClick("C", seatNumber)}
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                        <div className="seat-container">
-                            <div className="seat-row"> D
-                                {seatD.map((seatNumber) => {
-                                    const seatId = `D-${seatNumber}`;
-                                    const isSelected = selectedSeats.includes(seatId);
-
-                                    return (
-                                        <label
-                                            key={seatId}
-                                            className={`custom-checkbox ${isSelected ? "checked" : ""}`}
-                                            htmlFor={seatId}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                id={seatId}
-                                                checked={isSelected}
-                                                onChange={() => handleSeatClick("D", seatNumber)}
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                        <div>
-                            {Array.from({ length: 10 }, (_, index) => (
-                                <p key={index} className="row-number">
-                                    {index + 1}
-                                </p>
-                            ))}
-                        </div>
-
                     </div>
-                    {/* <div class="col-4 bg-white text-dark rounded-3">
-                        <h2>Movie Selected</h2>
-                        <div className="movie-selected bg-white text-dark p-4 rounded-3">
-                            <img src={require("../assets/CineOne.png")}></img>
-                            <button type="button" class="btn btn-primary float-end" >Change Movie</button>
-                        </div>
-                    </div> */}
                 </div>
             </div>
+
         </>
     )
 }

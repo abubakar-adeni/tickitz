@@ -1,65 +1,117 @@
-import React from 'react'
-import Navbar from '../components/navbar'
-import Footer from '../components/footer'
-import { Link } from 'react-router-dom'
-import '../styles/payment.css'
-import { CiWarning } from "react-icons/ci";
-import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { CiWarning } from 'react-icons/ci';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import '../styles/payment.css';
 
 export default function Payment() {
-    const location = useLocation()
-    const navigate = useNavigate()
-    const id = location?.pathname?.split("/")[2]
-    const [movies, setMovies] = React.useState([])
+    const location = useLocation();
+    const navigate = useNavigate();
+    const id = location?.pathname?.split('/')[2];
+    const [movies, setMovies] = useState([]);
     const query = new URLSearchParams(location.search);
     const selectedSeatsParam = query.get('selectedSeats');
     const selectedSeats = selectedSeatsParam ? selectedSeatsParam.split(',') : [];
     const [totalPrice, setTotalPrice] = useState(0);
     const [selectedButton, setSelectedButton] = useState(null);
-    const [profile, setProfile] = React.useState([])
-    const [fullname, setFullname] = React.useState([])
-    const [email, setEmail] = React.useState([])
-    const [phone_number, setPhonenumber] = React.useState([])
+    const [profile, setProfile] = useState({});
+    const [fullname, setFullname] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone_number, setPhonenumber] = useState('');
 
     const handleButtonClick = (buttonName) => {
         setSelectedButton(buttonName);
-    }
+    };
 
+    const handleCheckout = () => {
+        const paymentData = {
+            movie_id: id,
+            payment_date: new Date().toISOString(),
+            amount: totalPrice,
+        };
 
-    useEffect(() => {
-    
         axios
-          .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
-          .then((response) => setMovies(response?.data?.data[0]))
-          .catch((err) => {
-            console.log('error :', err);
-          });
-    
-        const calculatedTotalPrice = movies.price * selectedSeats.length;
-        setTotalPrice(calculatedTotalPrice);
-      }, [id, movies.price, selectedSeats]);
-    
+            .post(`${process.env.REACT_APP_BASE_URL}/pay`, paymentData)
+            .then((response) => {
+                if (response.data.status) {
+                    updatePaymentStatus(selectedButton);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Payment Successful',
+                        text: 'Your payment has been successfully processed.',
+                    });
+                    window.location.href = "/profile"
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Payment Failed',
+                        text: 'Sorry, there was an issue processing your payment.',
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Payment Failed',
+                    text: 'An error occurred while processing your payment.',
+                });
+            });
+    };
+
+    const updatePaymentStatus = (newStatus) => {
+        const paymentData = {
+            payment_id: id,
+            new_status: newStatus,
+        };
+
+        axios
+            .post(`${process.env.REACT_APP_BASE_URL}/update_payment_status`, paymentData)
+            .then((response) => {
+                if (response.data.status) {
+                    
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     useEffect(() => {
-        if (!localStorage.getItem("auth")) {
-            navigate("/login")
+        axios
+            .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
+            .then((response) => {
+                setMovies(response?.data?.data[0]);
+                const calculatedTotalPrice = response?.data?.data[0]?.price * selectedSeats.length;
+                setTotalPrice(calculatedTotalPrice);
+            })
+            .catch((err) => {
+                console.log('error :', err);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (!localStorage.getItem('auth')) {
+            navigate('/login');
         } else {
-            const user_id = localStorage.getItem("user_id")
+            const user_id = localStorage.getItem('user_id');
             axios
                 .get(`${process.env.REACT_APP_BASE_URL}/users/${user_id}`)
                 .then((response) => {
-                    setProfile(response?.data?.data[0])
-                    setFullname(profile.fullname)
-                    setEmail(profile.email)
-                    setPhonenumber(profile.phone_number)
+                    const userData = response?.data?.data[0];
+                    setProfile(userData);
+                    setFullname(userData?.fullname);
+                    setEmail(userData?.email);
+                    setPhonenumber(userData?.phone_number);
                 })
+                .catch((error) => {
+                    console.error(error);
+                });
         }
-    }, [])
-
+    }, []);
 
     return (
         <>
@@ -77,7 +129,7 @@ export default function Payment() {
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Movie title</h6>
-                            <h6 className="col-6 text-end">{movies.title}</h6>
+                            <h6 className="col-6 text-end">{movies?.title}</h6>
                         </div>
                         <hr />
                         <div className="row">
@@ -87,7 +139,7 @@ export default function Payment() {
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Number of tickets</h6>
-                            <h6 className="col-6 text-end">{selectedSeats.length}</h6>
+                            <h6 className="col-6 text-end">{selectedSeats?.length}</h6>
                         </div>
                         <hr />
                         <div className="row">
@@ -107,15 +159,15 @@ export default function Payment() {
                         <form>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" value={profile.fullname}></input>
+                                <input type="email" class="form-control" id="exampleInputEmail1" value={profile?.fullname}></input>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" value={profile.email}></input>
+                                <input type="text" class="form-control" value={profile?.email}></input>
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" value={profile.phone_number}></input>
+                                <input type="text" class="form-control" value={profile?.phone_number}></input>
                             </div>
                             <div class="p-3 text-primary-emphasis bg-warning-subtle border border-warning-subtle rounded-3 d-flex align-items-center">
                                 <CiWarning size={25} />Fill your data correctly.
@@ -166,7 +218,7 @@ export default function Payment() {
                     </div>
                     <div className='row text-center justify-content-center'>
                         <Link to={`/seat/${id}`} className="col-4 btn btn-lg  mt-4 me-5 checkout-now">Previous step</Link>
-                        <Link to={'/payment'} className="col-4 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</Link>
+                        <button className="col-4 btn btn-lg  mt-4 ms-5 change-movie" onClick={handleCheckout}>Checkout Now</button>
                     </div>
                 </div>
             </div>
