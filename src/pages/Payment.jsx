@@ -8,31 +8,58 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import axios from 'axios'
-
+import { useNavigate } from 'react-router-dom'
 
 export default function Payment() {
     const location = useLocation()
+    const navigate = useNavigate()
     const id = location?.pathname?.split("/")[2]
     const [movies, setMovies] = React.useState([])
+    const query = new URLSearchParams(location.search);
+    const selectedSeatsParam = query.get('selectedSeats');
+    const selectedSeats = selectedSeatsParam ? selectedSeatsParam.split(',') : [];
+    const [totalPrice, setTotalPrice] = useState(0);
     const [selectedButton, setSelectedButton] = useState(null);
+    const [profile, setProfile] = React.useState([])
+    const [fullname, setFullname] = React.useState([])
+    const [email, setEmail] = React.useState([])
+    const [phone_number, setPhonenumber] = React.useState([])
 
     const handleButtonClick = (buttonName) => {
         setSelectedButton(buttonName);
     }
 
-    
+
     useEffect(() => {
-        window.scroll(0, 0)
-        // if (!localStorage.getItem("auth")) {
-        //     navigate("/login");
-        // }
+    
         axios
-            .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
-            .then((response) => setMovies(response?.data?.data[0]))
-            .catch((err) => {
-                console.log("error :", err)
-            })
-    }, []);
+          .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
+          .then((response) => setMovies(response?.data?.data[0]))
+          .catch((err) => {
+            console.log('error :', err);
+          });
+    
+        const calculatedTotalPrice = movies.price * selectedSeats.length;
+        setTotalPrice(calculatedTotalPrice);
+      }, [id, movies.price, selectedSeats]);
+    
+
+    useEffect(() => {
+        if (!localStorage.getItem("auth")) {
+            navigate("/login")
+        } else {
+            const user_id = localStorage.getItem("user_id")
+            axios
+                .get(`${process.env.REACT_APP_BASE_URL}/users/${user_id}`)
+                .then((response) => {
+                    setProfile(response?.data?.data[0])
+                    setFullname(profile.fullname)
+                    setEmail(profile.email)
+                    setPhonenumber(profile.phone_number)
+                })
+        }
+    }, [])
+
 
     return (
         <>
@@ -55,17 +82,17 @@ export default function Payment() {
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Cinema name</h6>
-                            <h6 className="col-6 text-end">RINGO</h6>
+                            <h6 className="col-6 text-end">CineOne 21</h6>
                         </div>
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Number of tickets</h6>
-                            <h6 className="col-6 text-end">RINGO</h6>
+                            <h6 className="col-6 text-end">{selectedSeats.length}</h6>
                         </div>
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Total payment</h6>
-                            <h6 className="col-6 text-end">RINGO</h6>
+                            <h6 className="col-6 text-end">{totalPrice}</h6>
                         </div>
                     </div>
 
@@ -80,15 +107,15 @@ export default function Payment() {
                         <form>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                <input type="email" class="form-control" id="exampleInputEmail1" value={profile.fullname}></input>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Email</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"></input>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" value={profile.email}></input>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Phone Number</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"></input>
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" value={profile.phone_number}></input>
                             </div>
                             <div class="p-3 text-primary-emphasis bg-warning-subtle border border-warning-subtle rounded-3 d-flex align-items-center">
                                 <CiWarning size={25} />Fill your data correctly.

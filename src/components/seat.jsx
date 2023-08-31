@@ -216,7 +216,7 @@ export default function Test() {
         </div>
         <div className='row text-center justify-content-center'>
           <Link to={'/view-all'} className="col-2 btn btn-lg  mt-4 me-5 checkout-now">Change Your Movie</Link>
-          <Link to={`/payment/${id}`} className="col-2 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</Link>
+          <Link to={`/payment/${id}?selectedSeats=${selectedSeats.join(',')}`} className="col-2 btn btn-lg  mt-4 ms-5 change-movie">Checkout Now</Link>
         </div>
       </div>  
       <Footer />
