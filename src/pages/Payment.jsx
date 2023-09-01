@@ -135,11 +135,11 @@ export default function Payment() {
                     <h1>Payment Info</h1>
                     <div className="text-start p-3 bg-white text-dark list-payment" style={{ borderRadius: '11px' }}>
 
-                        <div className="row">
+                        {/* <div className="row">
                             <h6 className="col-6">Date & time</h6>
                             <h6 className="col-6 text-end"></h6>
                         </div>
-                        <hr />
+                        <hr /> */}
                         <div className="row">
                             <h6 className="col-6">Movie title</h6>
                             <h6 className="col-6 text-end">{movies?.title}</h6>
