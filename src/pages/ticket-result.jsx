@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { FormatRupiah } from '@arismun/format-rupiah'
 
 export default function Ticket() {
     const location = useLocation()
@@ -67,10 +68,10 @@ export default function Ticket() {
                                     <div className="col text-start fw">Date
                                         <p className='text-start fe'>{date}</p>
                                     </div>
-                                    <div className="col text-start fw">Time
+                                    <div className="col-2 text-start fw">Time
                                         <p className='text-start fe'>18:00</p>
                                     </div>
-                                    <div className="col-9 text-start fw">Category
+                                    <div className="col-8 text-start fw">Category
                                         <p className='text-start fe'>{movies?.category}</p>
                                     </div>
                                 </div>
@@ -78,11 +79,11 @@ export default function Ticket() {
                                     <div className="col text-start fw">Count
                                         <p className='text-start fe'>{count}</p>
                                     </div>
-                                    <div className="col text-start fw">Seats
-                                        <p className='text-start fe'>{seats}</p>
+                                    <div className="col-2 text-start fw">Price
+                                        <p className='text-start fe'><FormatRupiah value={price} /></p>
                                     </div>
-                                    <div className="col-9 text-start fw">Price
-                                        <p className='text-start fe'>{price}</p>
+                                    <div className="col-8 text-start fw">Seats
+                                        <p className='text-start fe'>{seats}</p>
                                     </div>
                                 </div>
                                 {/* <div className="row ">
