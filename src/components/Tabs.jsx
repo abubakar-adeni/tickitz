@@ -4,16 +4,25 @@ import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { HiChevronDown } from "react-icons/hi"
+import { useLocation } from 'react-router-dom'
 
 export default function Tabs() {
     const navigate = useNavigate()
     const [profile, setProfile] = React.useState([])
-
     const [fullname, setFullname] = React.useState([])
     const [email, setEmail] = React.useState([])
     const [phone_number, setPhonenumber] = React.useState([])
     const [password, setPassword] = React.useState([])
-    const [confirmPassword, setConfirmPassword] = React.useState([]);
+    const [confirmPassword, setConfirmPassword] = React.useState([])
+
+    const location = useLocation();
+    const query = new URLSearchParams(location.search)
+    const date = query.get('date');
+    const movieTitle = query.get('movieTitle')
+    const count = query.get('count')
+    const seats = query.get('seats')
+    const price = query.get('price')
 
 
     React.useEffect(() => {
@@ -172,14 +181,28 @@ export default function Tabs() {
                 </div>
 
 
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                    <div className="container py-5">
-                        <div className="row">
-                            <div className="col-lg-4">
-                                <div className="card mb-3">
-                                    <h1>APA</h1>
-                                </div>
+                    <div className="container text-center border border-dark-subtle rounded mt-2">
+                        <div className="row" style={{ height: '250px'}} >
+                            <div className="col-8 text-start border date mt-3">{date}</div>
+                            <div className="w-100"></div>
+                            <div className="col-4 border ">
+                                <h4 className='text-start movie-name'>{movieTitle}</h4>
+                            </div>
+                            <div className="col-8 text-end">
+                                <img src={require('../assets/CineOne.png')} alt="cinema" className='text-end' />
+                            </div>
+                            <hr />
+                            <div className="col-6 border border-primary-subtle text-start">
+                                <button type="button" className="btn btn-primary btn-lg " disabled>Ticket in active</button>
+                            </div>
+                            <div className="col-6 text-end">
+                                <button type="button" className="btn ">
+                                    <h5> See Details <HiChevronDown /></h5>
+                                </button>
+
+
                             </div>
                         </div>
                     </div>

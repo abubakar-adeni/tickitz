@@ -13,6 +13,7 @@ import ViewALL from "./pages/view-all";
 import Seat from "./components/seat";
 import Test from "./pages/Test";
 import Payment from "./pages/Payment";
+import Ticket from "./pages/ticket-result";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/payment/:id",
     element: <Payment />,
+  },
+  {
+    path: "/ticket/:id",
+    element: <Ticket />,
   },
 ])
 

@@ -21,9 +21,11 @@ export default function Payment() {
     const [fullname, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [phone_number, setPhonenumber] = useState('');
+    const [isPaymentMethodSelected, setIsPaymentMethodSelected] = useState(false);
 
     const handleButtonClick = (buttonName) => {
         setSelectedButton(buttonName);
+        setIsPaymentMethodSelected(true);
     };
 
     const handleCheckout = () => {
@@ -42,8 +44,18 @@ export default function Payment() {
                         icon: 'success',
                         title: 'Payment Successful',
                         text: 'Your payment has been successfully processed.',
+                        confirmButtonText: 'OK',
+                    }).then(() => {
+                        const dataToPass = {
+                            date: new Date(paymentData.payment_date).toLocaleDateString(),
+                            count: selectedSeats.length,
+                            seats: selectedSeats.join(', '),
+                            price: totalPrice,
+                            movieTitle: movies.title,
+                        };
+                        const queryParams = new URLSearchParams(dataToPass).toString();
+                        window.location.href = `/ticket/${id}?${queryParams}`;
                     });
-                    window.location.href = "/profile"
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -72,7 +84,7 @@ export default function Payment() {
             .post(`${process.env.REACT_APP_BASE_URL}/update_payment_status`, paymentData)
             .then((response) => {
                 if (response.data.status) {
-                    
+
                 }
             })
             .catch((error) => {
@@ -81,6 +93,7 @@ export default function Payment() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0)
         axios
             .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
             .then((response) => {
@@ -218,7 +231,7 @@ export default function Payment() {
                     </div>
                     <div className='row text-center justify-content-center'>
                         <Link to={`/seat/${id}`} className="col-4 btn btn-lg  mt-4 me-5 checkout-now">Previous step</Link>
-                        <button className="col-4 btn btn-lg  mt-4 ms-5 change-movie" onClick={handleCheckout}>Checkout Now</button>
+                        <button className="col-4 btn btn-lg  mt-4 ms-5 change-movie" onClick={handleCheckout} disabled={!isPaymentMethodSelected}>Pay your order</button>
                     </div>
                 </div>
             </div>
