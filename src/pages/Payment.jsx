@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { CiWarning } from 'react-icons/ci';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import '../styles/payment.css';
+import React, { useState, useEffect } from 'react'
+import Navbar from '../components/navbar'
+import Footer from '../components/footer'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { CiWarning } from 'react-icons/ci'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import '../styles/payment.css'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Payment() {
     const location = useLocation();
@@ -142,7 +144,7 @@ export default function Payment() {
                         <hr /> */}
                         <div className="row">
                             <h6 className="col-6">Movie title</h6>
-                            <h6 className="col-6 text-end">{movies?.title}</h6>
+                            <h6 className="col-6 text-end">{movies?.title || <Skeleton count={2} />}</h6>
                         </div>
                         <hr />
                         <div className="row">
@@ -152,12 +154,12 @@ export default function Payment() {
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Number of tickets</h6>
-                            <h6 className="col-6 text-end">{selectedSeats?.length}</h6>
+                            <h6 className="col-6 text-end">{selectedSeats?.length || <Skeleton count={2} />}</h6>
                         </div>
                         <hr />
                         <div className="row">
                             <h6 className="col-6">Total payment</h6>
-                            <h6 className="col-6 text-end">{totalPrice}</h6>
+                            <h6 className="col-6 text-end">{totalPrice || <Skeleton count={2} />}</h6>
                         </div>
                     </div>
 

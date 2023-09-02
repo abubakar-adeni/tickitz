@@ -9,6 +9,8 @@ import axios from 'axios'
 import { useLocation } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import { FormatRupiah } from '@arismun/format-rupiah'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Test() {
   const seatA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -72,19 +74,19 @@ export default function Test() {
               <div className="text-start p-2">
                 <div className="row">
                   <div className="col-6">Movie Selected</div>
-                  <div className="col-6 text-end">{movies.title}</div>
+                  <div className="col-6 text-end">{movies.title || <Skeleton count={2} />}</div>
                 </div>
               </div>
               <div className="text-start p-2">
                 <div className="row">
                   <div className="col-6">Date</div>
-                  <div className="col-6 text-end">{movies.price}</div>
+                  <div className="col-6 text-end">{movies.price || <Skeleton count={2} />}</div>
                 </div>
               </div>
               <div className="text-start p-2">
                 <div className="row">
                   <div className="col-6">One ticket price</div>
-                  <div className="col-6 text-end"><FormatRupiah value={movies.price} /></div>
+                  <div className="col-6 text-end"><FormatRupiah value={movies.price || <Skeleton count={2} />} /></div>
                 </div>
               </div>
               <hr />

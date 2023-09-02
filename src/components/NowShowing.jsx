@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import '../styles/card.css'
 import { useState } from 'react'
 import axios from 'axios'
-
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function NowShowing() {
     const [nowShowing, setNowShowing] = React.useState([])
@@ -64,11 +65,11 @@ export default function NowShowing() {
                 {nowShowing.slice(5, 10).map((film) => (
                     <div key={film.id} className="movie-container">
                         <div className="gambar">
-                            <img className='apa-aja' src={film.movies_picture} />
+                            <img className='apa-aja' src={film.movies_picture || <Skeleton count={3}/>} />
                         </div>
                         <div className='body-card '>
-                            <h5 className='card-text'>{film.title}</h5>
-                            <p className='genre'>{film.category}</p>
+                            <h5 className='card-text'>{film.title || <Skeleton count={1}/>}</h5>
+                            <p className='genre'>{film.category || <Skeleton count={1}/>}</p>
                             <Link to={`/movies/${film.id}`} class="btn btn-outline-primary details">Details</Link>
                         </div>
                     </div>

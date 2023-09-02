@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { FormatRupiah } from '@arismun/format-rupiah'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Ticket() {
     const location = useLocation()
@@ -61,29 +63,29 @@ export default function Ticket() {
                             <div class="col ms-3">
                                 <div className="row mb-3">
                                     <div className="col-6 text-start fw">Movie
-                                        <p className='text-start fe'>{movies?.title}</p>
+                                        <p className='text-start fe'>{movies?.title || <Skeleton count={1} />}</p>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
                                     <div className="col text-start fw">Date
-                                        <p className='text-start fe'>{date}</p>
+                                        <p className='text-start fe'>{date || <Skeleton count={1} />}</p>
                                     </div>
                                     <div className="col-2 text-start fw">Time
                                         <p className='text-start fe'>18:00</p>
                                     </div>
                                     <div className="col-8 text-start fw">Category
-                                        <p className='text-start fe'>{movies?.category}</p>
+                                        <p className='text-start fe'>{movies?.category || <Skeleton count={1} />}</p>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
                                     <div className="col text-start fw">Count
-                                        <p className='text-start fe'>{count}</p>
+                                        <p className='text-start fe'>{count || <Skeleton count={1} />}</p>
                                     </div>
                                     <div className="col-2 text-start fw">Price
-                                        <p className='text-start fe'><FormatRupiah value={price} /></p>
+                                        <p className='text-start fe'><FormatRupiah value={price || <Skeleton count={1} />}  /></p>
                                     </div>
                                     <div className="col-8 text-start fw">Seats
-                                        <p className='text-start fe'>{seats}</p>
+                                        <p className='text-start fe'>{seats || <Skeleton count={1} />}</p>
                                     </div>
                                 </div>
                                 {/* <div className="row ">

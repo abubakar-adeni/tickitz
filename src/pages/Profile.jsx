@@ -10,12 +10,14 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { AiFillDelete } from "react-icons/ai"
 import Loader from '../components/loader'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Profile() {
 
   const [showModal, setShowModal] = useState(false);
   const [uploadedImage, setUploadedImage] = useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -41,12 +43,14 @@ export default function Profile() {
   const [fullname, setFullname] = React.useState([])
   const [email, setEmail] = React.useState([])
   const [phone_number, setPhonenumber] = React.useState([])
+  const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
     if (!localStorage.getItem("auth")) {
       navigate("/login")
     } else {
       const user_id = localStorage.getItem("user_id")
+      setIsLoading(true);
       axios
         .get(`${process.env.REACT_APP_BASE_URL}/users/${user_id}`)
         .then((response) => {
@@ -54,6 +58,7 @@ export default function Profile() {
           setFullname(profile.fullname)
           setEmail(profile.email)
           setPhonenumber(profile.phone_number)
+          setIsLoading(false);
         })
     }
   }, [])
@@ -138,13 +143,28 @@ export default function Profile() {
                 </ul>
               </div>
               <div className="card-body  text-center pt-5 ">
-                <img src={profile.profile_picture} alt="profile" className='img img-thumbnail rounded-circle w-50' style={{
+              {isLoading ? (
+        <Skeleton width={200} height={200} circle={true} />
+      ) : (
+        <img
+          src={profile.profile_picture || ''}
+          alt="profile"
+          className="img img-thumbnail rounded-circle w-50"
+          style={{
+            width: '200px',
+            height: '200px',
+            objectFit: 'cover',
+            borderRadius: '50%',
+          }}
+        />
+      )}
+                {/* <img src={profile.profile_picture || <Skeleton count={2}/>} alt="profile" className='img img-thumbnail rounded-circle w-50' style={{
                   width: '200px',
                   height: '200px',
                   objectFit: 'cover',
                   borderRadius: '50%',
-                }} />
-                <h2 className='pt-3'>{profile.fullname}</h2>
+                }} /> */}
+                <h2 className='pt-3'>{profile.fullname || <Skeleton count={1}/> }</h2>
               </div>
             </div>
           </div>
