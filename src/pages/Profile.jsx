@@ -144,10 +144,10 @@ export default function Profile() {
               </div>
               <div className="card-body  text-center pt-5 ">
               {isLoading ? (
-        <Skeleton width={200} height={200} />
+        <Skeleton width={200} height={200} circle={50} />
       ) : (
         <img
-          src={profile.profile_picture || ''}
+          src={profile.profile_picture }
           alt="profile"
           className="img img-thumbnail rounded-circle w-50"
           style={{
