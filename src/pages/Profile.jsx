@@ -144,7 +144,7 @@ export default function Profile() {
               </div>
               <div className="card-body  text-center pt-5 ">
               {isLoading ? (
-        <Skeleton width={200} height={200} circle={true} />
+        <Skeleton width={200} height={200} />
       ) : (
         <img
           src={profile.profile_picture || ''}

@@ -65,11 +65,11 @@ export default function NowShowing() {
                 {nowShowing.slice(5, 10).map((film) => (
                     <div key={film.id} className="movie-container">
                         <div className="gambar">
-                            <img className='apa-aja' src={film.movies_picture || <Skeleton count={3}/>} />
+                            <img className='apa-aja' src={film.movies_picture} />
                         </div>
                         <div className='body-card '>
-                            <h5 className='card-text'>{film.title || <Skeleton count={1}/>}</h5>
-                            <p className='genre'>{film.category || <Skeleton count={1}/>}</p>
+                            <h5 className='card-text'>{film.title}</h5>
+                            <p className='genre'>{film.category}</p>
                             <Link to={`/movies/${film.id}`} class="btn btn-outline-primary details">Details</Link>
                         </div>
                     </div>

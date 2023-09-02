@@ -8,14 +8,15 @@ import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { FormatRupiah } from '@arismun/format-rupiah'
 import Footer from "../components/footer"
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+
 
 export default function Movies() {
     const location = useLocation()
     const id = location?.pathname?.split("/")[2]
     const [movies, setMovies] = React.useState([])
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = React.useState(true)
 
 
     useEffect(() => {
@@ -25,7 +26,10 @@ export default function Movies() {
         // }
         axios
             .get(`${process.env.REACT_APP_BASE_URL}/products/${id}`)
-            .then((response) => setMovies(response?.data?.data[0]))
+            .then((response) => {
+                setMovies(response?.data?.data[0])
+                setIsLoading(false)
+            })
             .catch((err) => {
                 console.log("error :", err)
             })
@@ -40,26 +44,30 @@ export default function Movies() {
                 <div className="row justify-content-start">
                     <div className="col-4 movier" >
                         <div className="movie-image border border-dark-subtle" style={{ width: '40vh', height: '55vh' }}>
-                            <img className='movies-buy' src={movies.movies_picture || <Skeleton count={3}/>} alt="" />
+                            {isLoading ? (<Skeleton height={'50vh'}/>) : (
+                                <img className='movies-buy' src={movies.movies_picture} alt="movie-picture" />
+                            )}
                         </div>
                     </div>
                     <div className="col-8 typo" style={{ width: '130vh', height: '60vh' }}>
                         <div className="description-movie">
-                            <h1 className='title-movie'>{movies.title || <Skeleton count={2}/>}</h1>
-                            <p className='genre-movie'>{movies.category || <Skeleton count={2}/>}</p>
+                            {isLoading ? ( <Skeleton count={1} height={40} style={{ marginBottom: '10px'}}/> ) : ( 
+                            <h1 className='title-movie'>{movies.title}</h1> )}
+                            {isLoading ? ( <Skeleton count={1} /> ) : (
+                            <p className='genre-movie'>{movies.category || <Skeleton count={1} />}</p> )}
                             <div className="date-release">
                                 <div className="row row-cols-4 row-movie">
                                     <div className="col col-6 text-start fw">Release Date
-                                        <p className='text-start fe'>{movies.release_date || <Skeleton count={2}/>}</p>
+                                        <p className='text-start fe'>{movies.release_date || <Skeleton count={1} />}</p>
                                     </div>
                                     <div className="col col-6 text-start fw">Duration
-                                        <p className='text-start fe'>{movies.duration || <Skeleton count={2}/>}</p>
+                                        <p className='text-start fe'>{movies.duration || <Skeleton count={1} />}</p>
                                     </div>
                                     <div className="col col-6 text-start fw">Directed by
-                                        <p className='text-start fe'>{movies.director || <Skeleton count={2}/>}</p>
+                                        <p className='text-start fe'>{movies.director || <Skeleton count={1} />}</p>
                                     </div>
                                     <div className="col col-6 text-start fw">Cast
-                                        <p className='text-start fe'>{movies.cast || <Skeleton count={2}/>}</p>
+                                        <p className='text-start fe'>{movies.cast || <Skeleton count={1} />}</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,9 +75,10 @@ export default function Movies() {
                             <div className="sinopsis-release">
                                 <h6 className='fw-bold'>Synopsis</h6>
                             </div>
+                            { isLoading ? ( <Skeleton count={1} width={'100%'}/> ) : (
                             <p className='synopsis'>
-                                {movies.description || <Skeleton count={1}/>}
-                            </p>
+                                {movies.description }
+                            </p>)}
                         </div>
                     </div>
                 </div>
@@ -114,7 +123,7 @@ export default function Movies() {
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-4">Price</div>
-                                            <div class="col-8 text-end"><FormatRupiah value={movies.price || <Skeleton count={1}/>} /></div>
+                                            <div class="col-8 text-end"><FormatRupiah value={movies.price} /></div>
                                         </div>
                                         <Link to={`/seat/${id}`} className="btn book-now mt-5">Book now</Link>
                                     </div>
@@ -131,7 +140,7 @@ export default function Movies() {
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-4">Price</div>
-                                            <div class="col-8 text-end"><FormatRupiah value={movies.price || <Skeleton count={1}/>} /></div>
+                                            <div class="col-8 text-end"><FormatRupiah value={movies.price} /></div>
                                         </div>
                                         <Link to={`/seat/${id}`} className="btn book-now mt-5">Book now</Link>
                                     </div>
