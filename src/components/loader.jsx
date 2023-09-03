@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/Loader.module.css'
 
-const Loader = (props) => {
+const Loader = () => {
 
   const isResponsive = window.innerWidth >= 370 && window.innerWidth <= 760;
 
