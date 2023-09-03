@@ -38,8 +38,8 @@ export default function Ticket() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid" style={{ backgroundColor: '#F5F6F8', height: '700px'}}>
-                <div className="container text-center  bg-white mt-5" style={{ borderRadius: '15px', height: '580px' }}>
+            <div className="container-fluid" style={{ backgroundColor: '#F5F6F8', height: '700px' }}>
+                <div className="container text-center  bg-white" style={{ borderRadius: '15px', height: '580px' }}>
                     <div className="row align-items-start">
                         <h1 className='mt-3'>Proof of Payment</h1>
                         <div className="col d-flex justify-content-center">
