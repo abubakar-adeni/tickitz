@@ -41,15 +41,15 @@ export default function Movies() {
             <Navbar />
 
             <section className="container-fluid text-center" style={{ height: '500px' }}>
-                <div className="row justify-content-start">
-                    <div className="col-4 movier" >
+                <div className="row justify-content-start justify-content-md-center">
+                    <div className="col-12 col-md-4 movier" >
                         <div className="movie-image border border-dark-subtle" style={{ width: '40vh', height: '55vh' }}>
                             {isLoading ? (<Skeleton height={'50vh'}/>) : (
-                                <img className='movies-buy' src={movies.movies_picture} alt="movie-picture" />
+                                <img className='movies-buy' src={movies.movies_picture} alt="movie-picture" loading="lazy"/>
                             )}
                         </div>
                     </div>
-                    <div className="col-8 typo" style={{ width: '130vh', height: '60vh' }}>
+                    <div className="col col-sm-12typo" style={{ width: '130vh', height: '60vh' }}>
                         <div className="description-movie">
                             {isLoading ? ( <Skeleton count={1} height={40} style={{ marginBottom: '10px'}}/> ) : ( 
                             <h1 className='title-movie'>{movies.title}</h1> )}

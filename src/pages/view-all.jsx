@@ -85,7 +85,7 @@ export default function ViewALL() {
                             searchResult.map((film) => (
                                 <div key={film.id} className='movie-container' style={{ margin: '25px'  }}>
                                     <div className='gambar'>
-                                        <img className='apa-aja' src={film.movies_picture} alt={film.title} />
+                                        <img className='apa-aja' src={film.movies_picture} alt={film.title} loading='lazy'/>
                                     </div>
                                     <div className='body-card'>
                                         <h5 className='card-text'>{film.title}</h5>
