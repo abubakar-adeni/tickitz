@@ -133,8 +133,8 @@ npm run build
 
 # Related Project
 
-:rocket: [`Frontend Recipe Food`](https://github.com/abubakar-adeni/tickitz)
+:rocket: [`Frontend Tickitz`](https://github.com/abubakar-adeni/tickitz)
 
-:rocket: [`Backend Recipe Food`](https://github.com/abubakar-adeni/tickitz-be)
+:rocket: [`Backend Tickitz`](https://github.com/abubakar-adeni/tickitz-be)
 
-:rocket: [`Demo Recipe Food`](https://tickitz-kappa.vercel.app/)
+:rocket: [`Demo Tickitz`](https://tickitz-kappa.vercel.app/)
