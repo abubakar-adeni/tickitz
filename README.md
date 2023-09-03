@@ -23,7 +23,7 @@
 
 # About The Project
 
-Recipe Mama is a recipe website that makes it easy for users to access food recipes with a delightful experience. Users can create an account and post their own recipes, and they can also bookmark their favorite recipes.
+Tickitz is a movie ticket booking website that provides users with a delightful experience for ordering tickets. Users can easily create an account and book tickets from home.
 
 ## Built With
 
