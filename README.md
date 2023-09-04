@@ -125,10 +125,12 @@ npm run build
     <td>Seat Page</td>
     <td> Payment Page</td>
       <tr> 
-     <td><img width="350px" src="./documentation/ticket.png" border="0" alt="payment" /> </td>
+     <td><img width="350px" src="./documentation/ticket.png" border="0" alt="ticket" /> </td>
+      <td><img width="350px" src="./documentation/list-movies.png" border="0" alt="list-movies" /> </td>
     </tr>
   <tr>
     <td>Ticket result Page</td>
+    <td>List Movies Page</td>
 </table>
 
 # Related Project
