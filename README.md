@@ -23,7 +23,7 @@
 
 # About The Project
 
-Recipe Mama is a recipe website that makes it easy for users to access food recipes with a delightful experience. Users can create an account and post their own recipes, and they can also bookmark their favorite recipes.
+Tickitz is a movie ticket booking website that provides users with a delightful experience for ordering tickets. Users can easily create an account and book tickets from home.
 
 ## Built With
 
@@ -45,7 +45,7 @@ You'll need these programs installed before proceeding to installation
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/en/download)
 
-This project requires [pijar-food-be](https://github.com/abubakar-adeni/tickitz-be) to function properly, follow the steps provided in the readme to install and run the backend API
+This project requires [tickitz-be](https://github.com/abubakar-adeni/tickitz-be) to function properly, follow the steps provided in the readme to install and run the backend API
 
 ## Installation
 
@@ -125,16 +125,18 @@ npm run build
     <td>Seat Page</td>
     <td> Payment Page</td>
       <tr> 
-     <td><img width="350px" src="./documentation/ticket.png" border="0" alt="payment" /> </td>
+     <td><img width="350px" src="./documentation/ticket.png" border="0" alt="ticket" /> </td>
+      <td><img width="350px" src="./documentation/list-movies.png" border="0" alt="list-movies" /> </td>
     </tr>
   <tr>
     <td>Ticket result Page</td>
+    <td>List Movies Page</td>
 </table>
 
 # Related Project
 
-:rocket: [`Frontend Recipe Food`](https://github.com/abubakar-adeni/food-recipev1)
+:rocket: [`Frontend Tickitz`](https://github.com/abubakar-adeni/tickitz)
 
-:rocket: [`Backend Recipe Food`](https://github.com/abubakar-adeni/backend-recipes)
+:rocket: [`Backend Tickitz`](https://github.com/abubakar-adeni/tickitz-be)
 
-:rocket: [`Demo Recipe Food`](https://food-recipev1.vercel.app/)
+:rocket: [`Demo Tickitz`](https://tickitz-kappa.vercel.app/)
