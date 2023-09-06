@@ -90,3 +90,11 @@
   scroll-snap-align: start;
   width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+  .container-parents  {
+    display: none;
+  }
+
+}
+

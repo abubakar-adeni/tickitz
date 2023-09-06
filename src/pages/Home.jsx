@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import NowShowing from '../components/NowShowing';
-import styles from '../styles/Home.css';
+import '../styles/Home.css';
 import banner1 from '../assets/banner1.png'
 import banner2 from '../assets/banner2.png'
 import banner3 from '../assets/banner3.png'
@@ -24,10 +24,10 @@ export default function Home() {
             </div>
             <div className="col-12 col-sm-12 mt-5 mt-lg-0 col-lg-6 d-flex justify-content-center container-card">
               <div className="card-movie">
-                <img src={banner1} className="card-img-top" alt="ok" />
+              <img src={banner1} className="card-img-top" alt="ok" />
               </div>
               <div className="card-movie">
-                <img src={banner2} className="card-img-top" alt="ok" />
+              <img src={banner2} className="card-img-top" alt="ok" />
               </div>
               <div className="card-movie">
                 <img src={banner3} className="card-img-top" alt="ok" />

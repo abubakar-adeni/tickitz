@@ -19,7 +19,7 @@ export default function UpcomingMovies() {
 
     return (
         <>
-            <section className='container-fluid position-relative' style={{ backgroundColor: 'white', height: '650px' }}>
+            <section className='container-fluid position-relative container-parents' style={{ backgroundColor: 'white', height: '650px' }}>
                 <h4 className='fw-bold upcoming position-absolute top-0 start-0 m-4'>Upcoming Movies</h4>
                 <div>
                     <Link to={"/view-all"} className='font-bold view-all text-decoration-none  m-5 position-absolute top-0 end-0 '>
