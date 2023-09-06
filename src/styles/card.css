@@ -91,6 +91,10 @@
   width: 100%;
 }
 
+.view-all {
+  z-index: 1000; /* Atur nilai z-index yang sesuai */
+}
+
 @media only screen and (max-width: 600px) {
   .container-parents  {
     display: none;

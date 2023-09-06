@@ -34,7 +34,7 @@ export default function NowShowing() {
             </Link>
           </div>
   
-          {isMobile ? ( // Menampilkan Carousel hanya pada tampilan mobile
+          {isMobile ? ( 
             <Carousel className='text-center'>
               {nowShowing.slice(5, 10).map((film) => (
                 <Carousel.Item key={film.id}>
