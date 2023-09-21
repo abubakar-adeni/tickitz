@@ -4,10 +4,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Spinner } from "react-bootstrap";
 import axios from "axios";
 
 function Register() {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = React.useState(false)
   const [fullName, setFullName] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [phone_number, setPhone_Number] = React.useState("")
@@ -32,6 +34,7 @@ function Register() {
   //   };
   // }, []);
   const handleRegistration = () => {
+    setIsLoading(true);
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/users`, {
         email: email,
@@ -54,6 +57,9 @@ function Register() {
           text: error?.response?.data?.message ?? "Something wrong in our App!",
           icon: "error",
         })
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -146,7 +152,13 @@ function Register() {
                       className={`btn btn-primary ${styles.button} mt-3`}
                       onClick={handleRegistration}
                     >
-                      Register
+                      {isLoading ? (
+                        <Spinner animation="border" size="sm" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                      ) : (
+                        "Log in"
+                      )}
                     </button>
                   </div>
                   <p className="text-end fs-6 fw-medium mt-3"></p>

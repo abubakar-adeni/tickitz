@@ -43,7 +43,7 @@ export default function ViewALL() {
     return (
         <>
             <Navbar />
-            <section className='movie-background' style={{ height: '1100px' }}>
+            <section className='movie-background'>
                 <div className="container-fluid text-center p-3">
                     <div className="row">
                         <div className="col-auto me-auto">

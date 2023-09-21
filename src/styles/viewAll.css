@@ -7,9 +7,7 @@ body {
     border-radius: 11px;
     background-color: rgb(239, 239, 239);
 }
-.movie-background{
-    background-color: rgb(255, 255, 255);
-}
+
 .movie-container {
     display: inline-block;
     outline: 2px solid rgba(255, 255, 255, 0.651);
@@ -112,5 +110,7 @@ body {
     border-color: #5F2EEA !important;
     color: white !important;
   }
+
+  
 
   

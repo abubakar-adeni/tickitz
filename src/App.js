@@ -14,6 +14,7 @@ import Seat from "./components/seat";
 import Test from "./pages/Test";
 import Payment from "./pages/Payment";
 import Ticket from "./pages/ticket-result";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "/ticket/:id",
     element: <Ticket />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ])
 

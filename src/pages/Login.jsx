@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAuth } from "../reducers/auth";
-import Loader from "../components/loader";
+import { Spinner } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -14,7 +14,7 @@ function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  
+
 
   // const [isResponsive, setIsResponsive] = useState(
   //   window.innerWidth >= 375 && window.innerWidth <= 768
@@ -36,6 +36,7 @@ function Login() {
   // }, []);
 
   const handleLogin = () => {
+    setIsLoading(true);
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
         email: email,
@@ -63,13 +64,16 @@ function Login() {
           icon: "error",
         })
       })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
     <div>
       <div className={`row g-0`}>
         <div className={`col-6  vh-100 d-flex justify-content-center align-items-center ${styles.left} `}>
-          <img style={{ boxSizing: "border-box"}} className={`${styles.logo} `} src={require("../assets/Tickitz2.png")} alt="img-logo" />
+          <img style={{ boxSizing: "border-box" }} className={`${styles.logo} `} src={require("../assets/Tickitz2.png")} alt="img-logo" />
         </div>
         <div className={`col-md-5 col-xs-10 ${styles.right} d-flex flex-column justify-content-center `}>
           <div className="container">
@@ -80,9 +84,9 @@ function Login() {
             <div className="row justify-content-center">
               <div className="col col-9">
                 <form
-                 onSubmit={(event) => {
-                  event.preventDefault();
-                }}>
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                  }}>
                   <div className="mb-3">
                     <label htmlFor="email" className={`form-label ${styles.Text}`}>
                       E-mail
@@ -128,14 +132,20 @@ function Login() {
                       className={`btn btn-primary ${styles.button} mt-3`}
                       onClick={handleLogin}
                     >
-                       {isLoading ? <Loader text="Logging in..."/> : <span>Log in</span>}
+                      {isLoading ? (
+                        <Spinner animation="border" size="sm" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                      ) : (
+                        "Log in"
+                      )}
                     </button>
                   </div>
                   <p className="text-end fs-6 fw-medium mt-3"></p>
                 </form>
               </div>
             </div>
-            <p className="text-center mt-2" style={{ color: "#5F2EEA"}}>
+            <p className="text-center mt-2" style={{ color: "#5F2EEA" }}>
               Don't have an account? {' '}
               <Link to='/register' className={`text-decoration-none ${styles.Login}`}>
                 Register
