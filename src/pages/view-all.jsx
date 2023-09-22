@@ -66,7 +66,7 @@ export default function ViewALL() {
                     </div>
                     <section className="m-4 container-mobile" style={{ backgroundColor: '#EFEFEF', height: '500px', borderRadius: '10px' }}>
                         <Carousel className='text-center'>
-                            {listMovies.slice(5, 10).map((film) => (
+                            {listMovies.map((film) => (
                                 <Carousel.Item key={film.id} className='mb-4'>
                                     <div className="movie-mobile">
                                         <div className="gambar">
