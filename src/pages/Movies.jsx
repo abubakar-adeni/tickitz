@@ -50,7 +50,7 @@ export default function Movies() {
                         </div>
                     </div>
                     <div className="col col-sm-12typo" style={{ width: '130vh', height: '60vh' }}>
-                        <div className="description-movie">
+                        <div className="description-movie mt-5">
                             {isLoading ? ( <Skeleton count={1} height={40} style={{ marginBottom: '10px'}}/> ) : ( 
                             <h1 className='title-movie'>{movies.title}</h1> )}
                             {isLoading ? ( <Skeleton count={1} /> ) : (

@@ -1,16 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/card.css'
-import { useState } from 'react'
 import axios from 'axios'
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useMediaQuery } from 'react-responsive'
 import Carousel from 'react-bootstrap/Carousel';
 
 
 export default function NowShowing() {
-    const isMobile = useMediaQuery({ maxWidth: 600 }); // Menentukan apakah tampilan mobile
+    const isMobile = useMediaQuery({ maxWidth: 600 });
     const [nowShowing, setNowShowing] = React.useState([]);
   
     React.useEffect(() => {
