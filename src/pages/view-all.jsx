@@ -67,12 +67,12 @@ export default function ViewALL() {
                     <section className="m-4 container-mobile" style={{ backgroundColor: '#EFEFEF', height: '500px', borderRadius: '10px' }}>
                         <Carousel className='text-center'>
                             {listMovies.slice(5, 10).map((film) => (
-                                <Carousel.Item key={film.id} className='mb-5'>
+                                <Carousel.Item key={film.id} className='mb-4'>
                                     <div className="movie-mobile">
                                         <div className="gambar">
                                             <img className='apa-aja' src={film.movies_picture} alt={film.title} />
                                         </div>
-                                        <div className='body-card '>
+                                        <div className='body-card-mobile'>
                                             <h5 className='card-text'>{film.title}</h5>
                                             <p className='genre'>{film.category}</p>
                                             <Link to={`/movies/${film.id}`} className="btn btn-outline-primary details">Details</Link>
