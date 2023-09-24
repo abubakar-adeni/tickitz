@@ -51,7 +51,7 @@ export default function ViewALL() {
         <>
             <Navbar />
             {isMobile ? (
-                <div className="container">
+                <div className="container mb-5">
                     <div className="searchbar mt-4" style={{ display: 'flex', justifyContent: 'space-between', flex: '2.5' }}>
                         <h4 >List Movies</h4>
                         <div className="input-group" style={{ flex: '0.7' }}>
