@@ -32,6 +32,10 @@ export default function ViewALL() {
 
     const handleSearch = () => {
         setIsLoading(false);
+        if (!keyword.trim()) {
+            setSearchResult([]);
+            return;
+        }
         axios
             .get(`${process.env.REACT_APP_BASE_URL}/products?keyword=${keyword}`)
             .then((response) => {
@@ -65,22 +69,41 @@ export default function ViewALL() {
                         </div>
                     </div>
                     <section className="m-4 container-mobile" style={{ backgroundColor: '#EFEFEF', height: '500px', borderRadius: '10px' }}>
-                        <Carousel className='text-center'>
-                            {listMovies.map((film) => (
-                                <Carousel.Item key={film.id} className='mb-4'>
-                                    <div className="movie-mobile">
-                                        <div className="gambar">
-                                            <img className='apa-aja' src={film.movies_picture} alt={film.title} />
+                        {isLoading ? (
+                            <Loader />
+                        ) : (
+                            (searchResult.length > 0 ? (
+                                searchResult.map((film) => (
+                                    <div key={film.id} className='movie-mobile'>
+                                        <div className='gambar'>
+                                            <img className='apa-aja' src={film.movies_picture} alt={film.title} loading='lazy' />
                                         </div>
                                         <div className='body-card-mobile'>
                                             <h5 className='card-text'>{film.title}</h5>
                                             <p className='genre'>{film.category}</p>
-                                            <Link to={`/movies/${film.id}`} className="btn btn-outline-primary details">Details</Link>
+                                            <Link to={`/movies/${film.id}`} className='btn btn-outline-primary details'>Details</Link>
                                         </div>
                                     </div>
-                                </Carousel.Item>
-                            ))}
-                        </Carousel>
+                                ))
+                            ) : (
+                                <Carousel className='text-center'>
+                                    {listMovies.map((film) => (
+                                        <Carousel.Item key={film.id} className='mb-4'>
+                                            <div className="movie-mobile">
+                                                <div className="gambar">
+                                                    <img className='apa-aja' src={film.movies_picture} alt={film.title} />
+                                                </div>
+                                                <div className='body-card-mobile'>
+                                                    <h5 className='card-text'>{film.title}</h5>
+                                                    <p className='genre'>{film.category}</p>
+                                                    <Link to={`/movies/${film.id}`} className="btn btn-outline-primary details">Details</Link>
+                                                </div>
+                                            </div>
+                                        </Carousel.Item>
+                                    ))}
+                                </Carousel>
+                            ))
+                        )}
                     </section>
                 </div>
 
@@ -123,7 +146,6 @@ export default function ViewALL() {
                             <Loader />
                         ) : (
                             searchResult.length > 0 ? (
-
                                 searchResult.map((film) => (
                                     <div key={film.id} className='movie-container' style={{ margin: '25px' }}>
                                         <div className='gambar'>
