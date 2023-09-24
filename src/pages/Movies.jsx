@@ -13,7 +13,7 @@ import { useMediaQuery } from 'react-responsive'
 
 
 export default function Movies() {
-    const isMobile = useMediaQuery({ maxWidth: 600 });
+    const isMobile = useMediaQuery({ maxWidth: 600 })
     const location = useLocation()
     const id = location?.pathname?.split("/")[2]
     const [movies, setMovies] = React.useState([])
@@ -41,7 +41,7 @@ export default function Movies() {
     return (
         <>
             <Navbar />
-            {isMobile ? (<>
+            {isMobile ? (
                 <section class="container-fluid">
                     <div class="d-flex justify-content-center m-5 border border-dark-subtle rounded-2" style={{ height: '50vh' }}>
                         {isLoading ? (<Skeleton height={'20rem'} width={'13rem'} />) : (
@@ -87,7 +87,7 @@ export default function Movies() {
                                 <h5 className="text-center mt-4">Showtimes and Tickets</h5>
                             </div>
                             <div className="input d-flex justify-content-center mt-2">
-                                <input type="date" className='form-control-sm' style={{ backgroundColor: '#F5F6F8', border: '1px solid #6E777F', borderRadius: '4px'}}/>
+                                <input type="date" className='form-control-sm' style={{ backgroundColor: '#F5F6F8', border: '1px solid #6E777F', borderRadius: '4px' }} />
                                 <div className="dropdown ms-3">
                                     <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                     >
@@ -137,21 +137,10 @@ export default function Movies() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
                 </section>
-                <Footer />
-            </>
-
-
-
-
-
-
             ) : (
-                <section className="container-fluid text-center" style={{ height: '500px' }}>
+                <section className="container-fluid text-center" style={{ height: '1100px'}}>
                     <div className="row justify-content-start justify-content-md-center">
                         <div className="col-12 col-md-4 movier" >
                             <div className="movie-image border border-dark-subtle" style={{ width: '40vh', height: '55vh' }}>
@@ -199,12 +188,12 @@ export default function Movies() {
                             <div className="col-2">
                                 <div className="form-group d-flex">
                                     <label htmlFor="datePicker" className="me-2"></label>
-                                    <input 
+                                    <input
                                         type="date"
                                         className="form-control-lg"
                                         id="datePicker"
                                         placeholder="Select Date"
-                                        style={{ backgroundColor: '#F5F6F8', border: '1px solid #6C757D'}}
+                                        style={{ backgroundColor: '#F5F6F8', border: '1px solid #6C757D' }}
                                     />
                                 </div>
                             </div>
@@ -261,9 +250,10 @@ export default function Movies() {
                             </div>
                         </div>
                     </div>
-                    <Footer />
+                   
                 </section>
             )}
+             <Footer />
         </>
     )
 }
