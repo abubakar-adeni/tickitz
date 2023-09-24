@@ -87,17 +87,7 @@ export default function Movies() {
                                 <h5 className="text-center mt-4">Showtimes and Tickets</h5>
                             </div>
                             <div className="input d-flex justify-content-center mt-2">
-                                <div className="dropdown me-3">
-                                    <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                    >
-                                        <HiOutlineLocationMarker className='me-2' /> Location
-                                    </button>
-                                    <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="#">Jakarta</a></li>
-                                        <li><a className="dropdown-item" href="#">Bandung</a></li>
-                                        <li><a className="dropdown-item" href="#">Makassar</a></li>
-                                    </ul>
-                                </div>
+                                <input type="date" className='form-control-sm' style={{ backgroundColor: '#F5F6F8', border: '1px solid #6E777F', borderRadius: '4px'}}/>
                                 <div className="dropdown ms-3">
                                     <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                     >
@@ -209,11 +199,12 @@ export default function Movies() {
                             <div className="col-2">
                                 <div className="form-group d-flex">
                                     <label htmlFor="datePicker" className="me-2"></label>
-                                    <input
+                                    <input 
                                         type="date"
-                                        className="form-control"
+                                        className="form-control-lg"
                                         id="datePicker"
                                         placeholder="Select Date"
+                                        style={{ backgroundColor: '#F5F6F8', border: '1px solid #6C757D'}}
                                     />
                                 </div>
                             </div>
