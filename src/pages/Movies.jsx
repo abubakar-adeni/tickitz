@@ -44,7 +44,7 @@ export default function Movies() {
             {isMobile ? (<>
                 <section class="container-fluid">
                     <div class="d-flex justify-content-center m-5 border border-dark-subtle rounded-2" style={{ height: '50vh' }}>
-                        {isLoading ? (<Skeleton height={'48vh'} width={'35vh'} />) : (
+                        {isLoading ? (<Skeleton style={{ height: '100%', width: '100%'}} />) : (
                             <img className='movies-picture' src={movies.movies_picture} alt="movie-picture" loading="lazy" />
                         )}
                     </div>
