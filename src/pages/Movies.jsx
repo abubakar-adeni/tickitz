@@ -44,7 +44,7 @@ export default function Movies() {
             {isMobile ? (<> 
             <section class="container-fluid">
                 <div class="d-flex justify-content-center m-5 border border-dark-subtle rounded-2" style={{ height: '50vh' }}>
-                    <img className='movies-buy' src={movies.movies_picture} alt="movie-picture" loading="lazy" />
+                    <img className='movies-beli ' src={movies.movies_picture} alt="movie-picture" loading="lazy" />
                 </div>
                 <div className="body-mobile text-center">
                     <h1>{movies.title}</h1>
