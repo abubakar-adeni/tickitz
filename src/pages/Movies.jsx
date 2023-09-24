@@ -41,75 +41,77 @@ export default function Movies() {
     return (
         <>
             <Navbar />
-            {isMobile ? (<> 
-            <section class="container-fluid">
-                <div class="d-flex justify-content-center m-5 border border-dark-subtle rounded-2" style={{ height: '50vh' }}>
-                    <img className='movies-beli ' src={movies.movies_picture} alt="movie-picture" loading="lazy" />
-                </div>
-                <div className="body-mobile text-center">
-                    <h1>{movies.title}</h1>
-                    <p>{movies.category}</p>
-                </div>
-                <div className="description-mobile text-center">
-                    <div className="row">
-                        <div className="col">
-                            <h6 className="fw">Release Date</h6>
-                            <p className='fe'>{movies.release_date || <Skeleton count={1} />}</p>
-                        </div>
-                        <div className="col">
-                            <h6 className="fw">Duration</h6>
-                            <p className='fe'>{movies.duration || <Skeleton count={1} />}</p>
-                        </div>
+            {isMobile ? (<>
+                <section class="container-fluid">
+                    <div class="d-flex justify-content-center m-5 border border-dark-subtle rounded-2" style={{ height: '50vh' }}>
+                        {isLoading ? (<Skeleton height={'48vh'} width={'35vh'} />) : (
+                            <img className='movies-picture' src={movies.movies_picture} alt="movie-picture" loading="lazy" />
+                        )}
                     </div>
-                    <div className="row mt-3">
-                        <div className="col">
-                            <h6 className="fw">Direction</h6>
-                            <p className='fe'>{movies.director || <Skeleton count={1} />}</p>
-                        </div>
-                        <div className="col fw">
-                            <h6 className="fw">Cast</h6>
-                            <p className='fe'>{movies.cast || <Skeleton count={1} />}</p>
-                        </div>
+                    <div className="body-mobile text-center">
+                        <h1>{movies.title}</h1>
+                        <p>{movies.category}</p>
                     </div>
-                    <hr />
-                    <div class="d-flex flex-column text-start mb-3">
-                        <h5 className='fw-bold mb-3'>Synopsis</h5>
-                        <p className='synopsis'>
-                            {movies.description}
-                        </p>
-                    </div>
-                </div>
-                <div className="showtimes row" style={{ backgroundColor: '#F5F6F8', height: '850px' }}>
-                    <div class="container-mobile">
-                        <div class="row">
-                            <h5 className="text-center mt-4">Showtimes and Tickets</h5>
-                        </div>
-                        <div className="input d-flex justify-content-center mt-2">
-                            <div className="dropdown me-3">
-                                <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                >
-                                    <HiOutlineLocationMarker className='me-2' /> Location
-                                </button>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Jakarta</a></li>
-                                    <li><a className="dropdown-item" href="#">Bandung</a></li>
-                                    <li><a className="dropdown-item" href="#">Makassar</a></li>
-                                </ul>
+                    <div className="description-mobile text-center">
+                        <div className="row">
+                            <div className="col">
+                                <h6 className="fw">Release Date</h6>
+                                <p className='fe'>{movies.release_date || <Skeleton count={1} />}</p>
                             </div>
-                            <div className="dropdown ms-3">
-                                <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                >
-                                    <HiOutlineLocationMarker className='me-2' /> Location
-                                </button>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Jakarta</a></li>
-                                    <li><a className="dropdown-item" href="#">Bandung</a></li>
-                                    <li><a className="dropdown-item" href="#">Makassar</a></li>
-                                </ul>
+                            <div className="col">
+                                <h6 className="fw">Duration</h6>
+                                <p className='fe'>{movies.duration || <Skeleton count={1} />}</p>
                             </div>
                         </div>
-                        <div className="d-flex flex-column mt-3">
-                        <div className="p-2 mb-2 col-md-4" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div className="row mt-3">
+                            <div className="col">
+                                <h6 className="fw">Direction</h6>
+                                <p className='fe'>{movies.director || <Skeleton count={1} />}</p>
+                            </div>
+                            <div className="col fw">
+                                <h6 className="fw">Cast</h6>
+                                <p className='fe'>{movies.cast || <Skeleton count={1} />}</p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="d-flex flex-column text-start mb-3">
+                            <h5 className='fw-bold mb-3'>Synopsis</h5>
+                            <p className='synopsis'>
+                                {movies.description}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="showtimes row" style={{ backgroundColor: '#F5F6F8', height: '850px' }}>
+                        <div class="container-mobile">
+                            <div class="row">
+                                <h5 className="text-center mt-4">Showtimes and Tickets</h5>
+                            </div>
+                            <div className="input d-flex justify-content-center mt-2">
+                                <div className="dropdown me-3">
+                                    <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                    >
+                                        <HiOutlineLocationMarker className='me-2' /> Location
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="#">Jakarta</a></li>
+                                        <li><a className="dropdown-item" href="#">Bandung</a></li>
+                                        <li><a className="dropdown-item" href="#">Makassar</a></li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown ms-3">
+                                    <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                    >
+                                        <HiOutlineLocationMarker className='me-2' /> Location
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="#">Jakarta</a></li>
+                                        <li><a className="dropdown-item" href="#">Bandung</a></li>
+                                        <li><a className="dropdown-item" href="#">Makassar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column mt-3">
+                                <div className="p-2 mb-2 col-md-4" style={{ display: 'flex', justifyContent: 'center' }}>
                                     <div className="card justify-content-center align-items-center border border-light-subtle" style={{ width: '20rem', height: '20rem', borderRadius: '15px' }}>
                                         <div className="card-body">
                                             <img src={require("../assets/CineOne.png")} />
@@ -143,17 +145,17 @@ export default function Movies() {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
+
                     </div>
 
-                </div>
 
-
-            </section>
-            <Footer />
+                </section>
+                <Footer />
             </>
 
-        
+
 
 
 
