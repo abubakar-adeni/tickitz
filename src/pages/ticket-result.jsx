@@ -73,8 +73,8 @@ export default function Ticket() {
                             </div>
                         </div>
                         <div className="d-flex justify-content-around border border-grey-subtle rounded m-3">
-                            <h5 className='p-2 fw'>Total</h5>
-                            <h5 className='p-2 fw'><FormatRupiah value={price || <Skeleton count={1} />} /></h5>
+                            <h5 className='p-2 mt-2 align-self-center fw'>Total</h5>
+                            <h5 className='p-2 mt-2 align-self-center fw'><FormatRupiah value={price || <Skeleton count={1} />} /></h5>
                         </div>
                     </div>
                 </section>
