@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import NowShowing from '../components/NowShowing';
+import UpcomingMovies from '../components/UpcomingMovies';
 import '../styles/Home.css';
 import banner1 from '../assets/banner1.png'
 import banner2 from '../assets/banner2.png'
@@ -39,7 +40,7 @@ export default function Home() {
 
     <NowShowing />
 
-    {/* <UpcomingMovies /> */}
+    <UpcomingMovies />
 
       <section className="join">
         <div className="container">
