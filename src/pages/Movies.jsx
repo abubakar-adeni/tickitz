@@ -19,7 +19,8 @@ export default function Movies() {
     const [movies, setMovies] = React.useState([])
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = React.useState(true)
-
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState('');
 
     useEffect(() => {
         window.scroll(0, 0)
@@ -36,6 +37,11 @@ export default function Movies() {
                 console.log("error :", err)
             })
     }, []);
+
+    const handleLocationSelect = (location) => {
+        setSelectedLocation(location);
+        setIsDropdownOpen(false); // Tutup dropdown setelah memilih
+    };
 
 
     return (
@@ -89,11 +95,16 @@ export default function Movies() {
                             <div className="input d-flex justify-content-center mt-2">
                                 <input type="date" className='form-control-sm' style={{ backgroundColor: '#F5F6F8', border: '1px solid #6E777F', borderRadius: '4px' }} />
                                 <div className="dropdown ms-3">
-                                    <button className="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                    <button
+                                        className={`btn btn-outline-secondary btn-sm dropdown-toggle ${isDropdownOpen ? 'show' : ''}`}
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded={isDropdownOpen}
+                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                     >
                                         <HiOutlineLocationMarker className='me-2' /> Location
                                     </button>
-                                    <ul className="dropdown-menu">
+                                    <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                                         <li><a className="dropdown-item" href="#">Jakarta</a></li>
                                         <li><a className="dropdown-item" href="#">Bandung</a></li>
                                         <li><a className="dropdown-item" href="#">Makassar</a></li>
@@ -140,7 +151,7 @@ export default function Movies() {
                     </div>
                 </section>
             ) : (
-                <section className="container-fluid text-center" style={{ height: '1100px'}}>
+                <section className="container-fluid text-center" style={{ height: '1100px' }}>
                     <div className="row justify-content-start justify-content-md-center">
                         <div className="col-12 col-md-4 movier" >
                             <div className="movie-image border border-dark-subtle" style={{ width: '40vh', height: '55vh' }}>
@@ -199,14 +210,19 @@ export default function Movies() {
                             </div>
                             <div className="col-1 ms-5">
                                 <div className="dropdown">
-                                    <button className="btn btn-outline-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                    <button
+                                        className={`btn btn-outline-secondary btn-lg dropdown-toggle ${isDropdownOpen ? 'show' : ''}`}
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded={isDropdownOpen}
+                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                     >
-                                        <HiOutlineLocationMarker className='me-2' /> Location
+                                        <HiOutlineLocationMarker className='me-2' /> {selectedLocation || 'Location'}
                                     </button>
-                                    <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="#">Jakarta</a></li>
-                                        <li><a className="dropdown-item" href="#">Bandung</a></li>
-                                        <li><a className="dropdown-item" href="#">Makassar</a></li>
+                                    <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
+                                        <li><a className="dropdown-item" onClick={() => handleLocationSelect('Jakarta')}>Jakarta</a></li>
+                                        <li><a className="dropdown-item" onClick={() => handleLocationSelect('Bandung')}>Bandung</a></li>
+                                        <li><a className="dropdown-item" onClick={() => handleLocationSelect('Makassar')}>Makassar</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -250,10 +266,10 @@ export default function Movies() {
                             </div>
                         </div>
                     </div>
-                   
+
                 </section>
             )}
-             <Footer />
+            <Footer />
         </>
     )
 }

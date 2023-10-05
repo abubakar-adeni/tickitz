@@ -137,3 +137,14 @@ body {
     left: 0;
     width: 100%;
   }
+
+  /* .movie-list {
+    display: flex;
+    flex: wrap;
+  } */
+
+  /* .movie-container {
+    flex: 0 0 calc(33.33% - 10px);
+    margin: 5px;
+    box-sizing: border-box;
+  } */

@@ -92,13 +92,7 @@
 }
 
 .view-all {
-  z-index: 1000; /* Atur nilai z-index yang sesuai */
+  z-index: 1000; 
 }
 
-@media only screen and (max-width: 600px) {
-  .container-parents  {
-    display: none;
-  }
-
-}
 

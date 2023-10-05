@@ -39,7 +39,7 @@ export default function Home() {
 
     <NowShowing />
 
-    <UpcomingMovies />
+    {/* <UpcomingMovies /> */}
 
       <section className="join">
         <div className="container">

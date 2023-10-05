@@ -24,7 +24,7 @@ export default function NowShowing() {
   
     return (
       <>
-        <section className='container-fluid position-relative' style={{ backgroundColor: '#F5F6F8', height: '650px' }}>
+        <section className='container-fluid position-relative container-parents' style={{ backgroundColor: '#F5F6F8', height: '650px' }}>
           <h4 className='fw-bold now-showing position-absolute top-0 start-0 m-4'>Now Showing</h4>
           <div>
             <Link to={`/view-all`} className='font-bold view-all text-decoration-none  m-5 position-absolute top-0 end-0 '>
