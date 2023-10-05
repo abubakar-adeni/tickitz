@@ -102,12 +102,12 @@ export default function Movies() {
                                         aria-expanded={isDropdownOpen}
                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                     >
-                                        <HiOutlineLocationMarker className='me-2' /> Location
+                                        <HiOutlineLocationMarker className='me-2' /> {selectedLocation || 'Location'}
                                     </button>
                                     <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
-                                        <li><a className="dropdown-item" href="#">Jakarta</a></li>
-                                        <li><a className="dropdown-item" href="#">Bandung</a></li>
-                                        <li><a className="dropdown-item" href="#">Makassar</a></li>
+                                        <li><a className="dropdown-item" onClick={() => handleLocationSelect('Jakarta')}>Jakarta</a></li>
+                                        <li><a className="dropdown-item" onClick={() => handleLocationSelect('Bandung')}>Bandung</a></li>
+                                        <li><a className="dropdown-item" onClick={() => handleLocationSelect('Makassar')}>Makassar</a></li>
                                     </ul>
                                 </div>
                             </div>
