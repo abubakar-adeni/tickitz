@@ -129,7 +129,7 @@ npm run build
       <td><img width="350px" src="./documentation/list-movies.png" border="0" alt="list-movies" /> </td>
     </tr>
   <tr>
-    <td>Ticket result Page</td>
+    <td>Ticket Result Page</td>
     <td>List Movies Page</td>
 </table>
 
